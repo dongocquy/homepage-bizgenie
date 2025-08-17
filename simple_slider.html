@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Slider</title>
+    <style>
+        .slider-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slider-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 400px;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        
+        .slider-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .dot.active {
+            background: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Slider</h1>
+    
+    <div class="slider-container">
+        <div class="slider-track">
+            <div class="slide">
+                <img src="https://static.agentcloud.vn/bizgenie.vn/images/test_642f0b38b1_20250813.png" alt="Demo 1">
+            </div>
+            <div class="slide">
+                <img src="image/1.jpg" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="image/2.jpg" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="https://static.agentcloud.vn/bizgenie.vn/images/test_642f0b38b1_20250813.png" alt="Demo 3">
+            </div>
+        </div>
+        
+        <button class="slider-nav prev">‹</button>
+        <button class="slider-nav next">›</button>
+        
+        <div class="slider-dots"></div>
+    </div>
+    
+    <script>
+        class SimpleSlider {
+            constructor(container) {
+                this.container = container;
+                this.track = container.querySelector('.slider-track');
+                this.slides = container.querySelectorAll('.slide');
+                this.prevBtn = container.querySelector('.prev');
+                this.nextBtn = container.querySelector('.next');
+                this.dotsContainer = container.querySelector('.slider-dots');
+                
+                this.currentIndex = 0;
+                this.totalSlides = this.slides.length;
+                
+                this.init();
+            }
+            
+            init() {
+                this.createDots();
+                this.updateSlider();
+                this.bindEvents();
+                console.log('Slider initialized with', this.totalSlides, 'slides');
+            }
+            
+            createDots() {
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'dot';
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+            
+            updateSlider() {
+                const translateX = -this.currentIndex * 100;
+                this.track.style.transform = `translateX(${translateX}%)`;
+                
+                // Update dots
+                const dots = this.dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+                
+                console.log('Current slide:', this.currentIndex + 1);
+            }
+            
+            next() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+                this.updateSlider();
+            }
+            
+            prev() {
+                this.currentIndex = this.currentIndex === 0 ? this.totalSlides - 1 : this.currentIndex - 1;
+                this.updateSlider();
+            }
+            
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateSlider();
+            }
+            
+            bindEvents() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Touch events
+                let startX = 0;
+                let endX = 0;
+                
+                this.container.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                }, { passive: true });
+                
+                this.container.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                }, { passive: true });
+                
+                // Keyboard
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prev();
+                    if (e.key === 'ArrowRight') this.next();
+                });
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = new SimpleSlider(document.querySelector('.slider-container'));
+            console.log('SimpleSlider ready!');
+        });
+    </script>
+</body>
+</html> 
