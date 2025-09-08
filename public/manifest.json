@@ -1,0 +1,41 @@
+{
+  "name": "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
+  "short_name": "BizHKD",
+  "description": "Giải pháp AI ghi sổ kế toán thông minh cho Hộ kinh doanh",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "vi",
+  "categories": ["business", "productivity", "finance"],
+  "icons": [
+    {
+      "src": "/next.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Tính năng",
+      "short_name": "Tính năng",
+      "description": "Xem các tính năng của BizHKD",
+      "url": "/#features"
+    },
+    {
+      "name": "Bảng giá",
+      "short_name": "Bảng giá",
+      "description": "Xem bảng giá các gói dịch vụ",
+      "url": "/#pricing"
+    },
+    {
+      "name": "Liên hệ",
+      "short_name": "Liên hệ",
+      "description": "Liên hệ với chúng tôi",
+      "url": "/#contact"
+    }
+  ]
+} 

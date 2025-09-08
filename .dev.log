@@ -1,0 +1,105 @@
+Now using node v18.20.8 (npm v10.8.2)
+Node.js version: v18.20.8
+npm version: 10.8.2
+
+> nextjs-project@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.4.6 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.6:3000
+
+ ✓ Starting...
+ ✓ Ready in 5.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 15.4s
+ GET / 200 in 17836ms
+ ○ Compiling /pricing ...
+ ✓ Compiled /pricing in 760ms
+ GET /pricing 200 in 1478ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 1449ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 1813ms
+ GET /pricing 200 in 834ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 434ms
+ GET / 200 in 654ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 408ms
+ ✓ Compiled in 570ms
+ ✓ Compiled in 247ms
+ ✓ Compiled / in 78ms
+ GET / 200 in 1080ms
+ GET /pricing 200 in 1103ms
+ ✓ Compiled in 658ms
+ ✓ Compiled in 0ms
+ GET /pricing 200 in 421ms
+ ✓ Compiled / in 274ms
+ GET / 200 in 1417ms
+ GET / 200 in 1223ms
+ GET / 200 in 601ms
+ ✓ Compiled in 666ms
+ ✓ Compiled in 829ms
+ GET / 200 in 1706ms
+ GET / 200 in 941ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 611ms
+ ✓ Compiled in 677ms
+ ✓ Compiled in 1001ms
+ ✓ Compiled in 808ms
+ ✓ Compiled in 1053ms
+ ✓ Compiled in 909ms
+ GET / 200 in 465ms
+ GET / 200 in 1099ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 325ms
+ GET / 200 in 797ms
+ GET / 200 in 958ms
+ ✓ Compiled in 784ms
+ ✓ Compiled in 538ms
+ GET / 200 in 1619ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 434ms
+ ✓ Compiled in 545ms
+ ✓ Compiled in 391ms
+ GET / 200 in 515ms
+ ✓ Compiled in 604ms
+ ✓ Compiled in 4.5s
+ ✓ Compiled /pricing in 251ms
+ GET / 200 in 1237ms
+ GET /pricing 200 in 1444ms
+ GET / 200 in 655ms
+ GET /pricing 200 in 627ms
+ GET / 200 in 874ms
+ ✓ Compiled in 704ms
+ GET / 200 in 1663ms
+ ✓ Compiled in 736ms
+ ✓ Compiled in 1003ms
+ GET / 200 in 319ms
+ ✓ Compiled in 993ms
+ ✓ Compiled in 1817ms
+ ✓ Compiled in 396ms
+ GET / 200 in 954ms
+ ✓ Compiled in 411ms
+ GET / 200 in 778ms
+ ✓ Compiled in 928ms
+ GET / 200 in 834ms
+ ✓ Compiled in 1540ms
+ GET / 200 in 696ms
+ ✓ Compiled in 1727ms
+ GET / 200 in 1528ms
+ GET / 200 in 185ms
+ ✓ Compiled in 914ms
+ ✓ Compiled in 1506ms
+ ✓ Compiled in 623ms
+ ✓ Compiled in 417ms
+ GET / 200 in 577ms
+ GET / 200 in 970ms
+ GET / 200 in 876ms
+ GET / 200 in 1764ms
+ GET / 200 in 1040ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 392ms
+ GET / 200 in 826ms
+ GET / 200 in 767ms
+ GET / 200 in 943ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 451ms
+ ✓ Compiled in 492ms
+ ✓ Compiled in 490ms
+ GET / 200 in 2477ms
+ GET / 200 in 663ms
+[?25h
