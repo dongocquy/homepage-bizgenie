@@ -69,12 +69,12 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section id="faq" className="py-5 faq-section">
+    <section id="faq" className="py-5 bg-card">
       <div className="container">
         <div className="text-center mb-5">
           <h6 className="text-primary fw-bold mb-2">CÂU HỎI THƯỜNG GẶP</h6>
           <h2 className="display-5 fw-bold mb-3 text-white">Giải đáp thắc mắc của bạn</h2>
-          <p className="lead text-light">Tìm hiểu thêm về BizHKD và cách sử dụng hiệu quả</p>
+          <p className="lead text-secondary">Tìm hiểu thêm về BizHKD và cách sử dụng hiệu quả</p>
         </div>
         
         <div className="row g-4 justify-content-center">
@@ -94,7 +94,7 @@ const FAQ: React.FC = () => {
                             <i className={`${item.icon} ${item.iconColor}`}></i>
                           </div>
                         </div>
-                        <h5 className="faq-question mb-0">{item.question}</h5>
+                        <h5 className="faq-question mb-0 text-white">{item.question}</h5>
                         <div className="faq-toggle">
                           <i className={`fas fa-chevron-down ${openItems.includes(item.id) ? 'rotated' : ''}`}></i>
                         </div>

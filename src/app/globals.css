@@ -46,10 +46,530 @@ section + section {
   display: block !important;
 }
 
+/* Demo Interface Styles - Exact Match with Image */
+/* Fix features list layout */
+.demo-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-right: 1rem;
+  background: transparent !important;
+}
+
+/* Fix feature cards layout */
+.demo-feature-card {
+  background: var(--dark-secondary) !important;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid var(--dark-border) !important;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+.demo-feature-card:hover {
+  background: var(--dark-card) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.demo-feature-card.active {
+  border-color: var(--accent-color) !important;
+  background: var(--dark-card) !important;
+  box-shadow: 0 0 0 1px var(--accent-color);
+}
+
+.demo-feature-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.demo-feature-content h5 {
+  color: var(--dark-text) !important;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.demo-feature-content p {
+  color: var(--dark-text-secondary) !important;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.demo-interface {
+  background: var(--dark-card) !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--dark-border);
+}
+
+.demo-header {
+  background: var(--dark-secondary) !important;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.demo-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demo-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.demo-nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.demo-nav-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.demo-nav-link:hover {
+  color: #1f2937;
+}
+
+.demo-user {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Remove demo-login-status as it's now inline with logo */
+
+.demo-main-content {
+  padding: 2rem 1.5rem;
+  background: var(--dark-card) !important;
+}
+
+/* Fix demo sidebar and content layout */
+.demo-sidebar {
+  background: var(--dark-secondary) !important;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--dark-border);
+  margin-right: 1rem;
+}
+
+.demo-content-area {
+  padding-left: 0;
+  padding: 2rem;
+}
+
+/* Demo Image Container */
+.demo-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--dark-border);
+  max-width: 1600px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.demo-image-container img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 0.75rem;
+}
+
+.demo-image-container:hover img {
+  transform: scale(1.08);
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.3);
+}
+
+/* Demo Image Overlay */
+.demo-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.demo-image-container:hover .demo-image-overlay {
+  opacity: 1;
+}
+
+.demo-overlay-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color)) !important;
+  border: none !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+  transform: translateY(20px);
+  transition: all 0.3s ease !important;
+}
+
+.demo-image-container:hover .demo-overlay-btn {
+  transform: translateY(0);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6) !important;
+}
+
+.demo-overlay-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 35px rgba(139, 92, 246, 0.8) !important;
+}
+
+/* Demo Image Transition */
+.demo-image-transition {
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+/* Demo Image Wrapper Animation */
+.demo-image-wrapper {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.demo-image-wrapper.changing {
+  opacity: 0.1;
+  transform: scale(0.98);
+}
+
+.demo-image-wrapper img {
+  transition: all 0.3s ease;
+}
+
+/* Feature Card Click Animation */
+.demo-feature-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.demo-feature-card:hover::before {
+  left: 100%;
+}
+
+.demo-feature-card.active::before {
+  background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.3), transparent);
+}
+
+/* Pulse animation for active card */
+.demo-feature-card.active {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(251, 191, 36, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+  }
+}
+
+.demo-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove duplicate CSS - already defined above */
+
+.demo-link {
+  color: #6b7280;
+}
+
+.demo-link:hover {
+  color: #1f2937;
+}
+
+.demo-nav-link {
+  color: #6b7280;
+}
+
+.demo-nav-link:hover {
+  color: #1f2937;
+}
+
+.demo-user {
+  color: #6b7280;
+}
+
+/* Update demo content area for dark theme */
+.demo-content-area h3 {
+  color: var(--dark-text) !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.demo-content-area p {
+  color: var(--dark-text-secondary) !important;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #f59e0b, #ec4899);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #d97706, #db2777);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+}
+
+.demo-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.demo-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.demo-link:hover {
+  color: #1f2937;
+}
+
+/* Fix dashboard section layout */
+.demo-dashboard-section {
+  background: var(--dark-secondary) !important;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid var(--dark-border);
+  margin-top: 2rem;
+}
+
+/* Remove duplicate CSS - already defined above */
+
+/* Fix dashboard cards layout */
+.demo-dashboard-card {
+  background: var(--dark-secondary) !important;
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-dashboard-card:hover {
+  background: var(--dark-card) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.demo-dashboard-section h4 {
+  color: var(--dark-text) !important;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.demo-dashboard-section p {
+  color: var(--dark-text-secondary) !important;
+  font-size: 0.95rem;
+}
+
+.demo-dashboard-card i {
+  font-size: 1rem;
+}
+
+/* Force dark theme for demo section to match overall theme */
+#demo {
+  background: var(--dark-bg) !important;
+}
+
+#demo .demo-feature-card {
+  background: var(--dark-secondary) !important;
+  border: 2px solid var(--dark-border) !important;
+}
+
+#demo .demo-feature-card:hover {
+  background: var(--dark-card) !important;
+}
+
+#demo .demo-feature-card.active {
+  background: var(--dark-card) !important;
+  border-color: var(--accent-color) !important;
+}
+
+#demo .demo-interface {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+#demo .demo-header {
+  background: var(--dark-secondary) !important;
+  border-bottom: 1px solid var(--dark-border) !important;
+}
+
+#demo .demo-main-content {
+  background: var(--dark-card) !important;
+}
+
+#demo .demo-sidebar {
+  background: var(--dark-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+#demo .demo-dashboard-section {
+  background: var(--dark-secondary) !important;
+  border-top: 1px solid var(--dark-border) !important;
+}
+
+#demo .demo-dashboard-card {
+  background: var(--dark-secondary) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+#demo .demo-dashboard-card:hover {
+  background: var(--dark-card) !important;
+}
+
+/* Remove duplicate CSS - already defined above */
+
+.demo-feature-content h5 {
+  color: #1f2937;
+}
+
+.demo-feature-content p {
+  color: #6b7280;
+}
+
+/* Remove duplicate CSS - already defined above */
+
+/* Remove duplicate CSS - already defined above */
+
+/* Make the gradient button more prominent */
+.btn-gradient {
+  background: linear-gradient(135deg, #f59e0b, #ec4899) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  font-size: 1rem !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #d97706, #db2777) !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4) !important;
+}
+
 /* Ensure demo content is visible */
 .demo-content {
   position: relative;
   z-index: 1;
+}
+
+/* Demo tabs styling */
+.demo-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.demo-tab {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--dark-border);
+  border-radius: 0.75rem;
+  background-color: var(--dark-card);
+  color: var(--dark-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.demo-tab.active {
+  border-color: var(--accent-color);
+  background-color: var(--dark-card);
+}
+
+.demo-tab:hover {
+  border-color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+.demo-tab-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.demo-tab-content h6 {
+  color: var(--dark-text);
+  margin: 0;
+  font-weight: 600;
+}
+
+.demo-tab-content p {
+  color: var(--dark-text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 /* Fix any potential z-index issues */
@@ -596,6 +1116,13 @@ input, textarea, select {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.demo-tab.animate-fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .demo-tab:hover {
@@ -645,10 +1172,18 @@ input, textarea, select {
 
 .demo-item {
   display: none;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s ease;
 }
 
 .demo-item.show {
   display: block;
+}
+
+.demo-item.animate-fade-in-scale {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .demo-image-container {
@@ -691,6 +1226,14 @@ input, textarea, select {
   border-radius: var(--border-radius);
   border: 1px solid var(--dark-border) !important;
   margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+}
+
+.demo-feature-item.animate-fade-in-left {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .demo-cta {
@@ -699,18 +1242,7 @@ input, textarea, select {
   border: none !important;
 }
 
-/* Breadcrumb Navigation */
-.breadcrumb-nav {
-  background-color: var(--dark-bg);
-  border-bottom: 1px solid var(--dark-border);
-  padding: 0.75rem 0;
-  margin-top: 32px; /* Để tránh bị che bởi fixed navbar */
-}
 
-/* Main content spacing for pages without breadcrumb */
-main:first-child {
-  padding-top: 0; /* Không cần padding-top vì Hero section đã có padding-top */
-}
 
 /* Adjust spacing for compact navbar */
 .hero-section {
@@ -723,70 +1255,13 @@ section {
   z-index: 1;
 }
 
-.breadcrumb-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
 
-.breadcrumb-item {
-  display: flex;
-  align-items: center;
-  margin: 0;
-}
 
-.breadcrumb-link {
-  color: var(--dark-text-secondary);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-}
 
-.breadcrumb-link:hover {
-  color: var(--primary-color);
-  text-decoration: none;
-}
 
-.breadcrumb-current {
-  color: var(--primary-color);
-  font-size: 0.9rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-}
 
-.breadcrumb-separator {
-  color: var(--dark-text-secondary);
-  margin: 0 0.75rem;
-  font-size: 0.8rem;
-  opacity: 0.6;
-}
 
-.breadcrumb-nav .container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 
-/* Responsive breadcrumb */
-@media (max-width: 768px) {
-  .breadcrumb-nav {
-    padding: 0.5rem 0;
-  }
-  
-  .breadcrumb-list {
-    font-size: 0.85rem;
-  }
-  
-  .breadcrumb-separator {
-    margin: 0 0.5rem;
-  }
-}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -822,16 +1297,6 @@ section {
 }
 
 /* Enhanced Animations from Legacy */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 @keyframes slideInLeft {
   from {
@@ -907,6 +1372,53 @@ section {
   100% { background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-secondary) 30%, var(--primary-color) 70%, var(--accent-color) 100%); }
 }
 
+/* Demo Animation Classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.5s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.4s ease-out forwards;
+}
+
 /* Utility Classes */
 .text-primary { color: var(--primary-color) !important; }
 .text-secondary { color: var(--dark-text-secondary) !important; }
@@ -917,7 +1429,10 @@ section {
 
 .bg-primary { background-color: var(--primary-color) !important; }
 .bg-secondary { background-color: var(--dark-secondary) !important; }
-.bg-card { background-color: var(--dark-card) !important; }
+.bg-card { 
+  background-color: var(--dark-card) !important; 
+  color: var(--dark-text) !important;
+}
 .bg-accent { background-color: var(--accent-color) !important; }
 
 /* Ghi đè Bootstrap background classes */
@@ -1170,41 +1685,43 @@ section {
 }
 
 .pricing-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  transform: scaleX(0);
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, var(--accent-color), var(--warning-color)) !important;
+  transform: scaleX(0) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 1 !important;
 }
 
 .pricing-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 20%, rgba(139, 92, 246, 0.2) 40%, rgba(251, 191, 36, 0.3) 60%, rgba(139, 92, 246, 0.2) 80%, transparent 100%);
-  transform: translateX(-100%);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(45deg, transparent 20%, rgba(251, 191, 36, 0.2) 40%, rgba(245, 158, 11, 0.3) 60%, rgba(251, 191, 36, 0.2) 80%, transparent 100%) !important;
+  transform: translateX(-100%) !important;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 1 !important;
 }
 
 .pricing-card:hover::before {
-  transform: scaleX(1);
+  transform: scaleX(1) !important;
 }
 
 .pricing-card:hover::after {
-  transform: translateX(100%);
+  transform: translateX(100%) !important;
 }
 
 .pricing-card:hover {
   transform: translateY(-15px) scale(1.02) !important;
-  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.3), 0 35px 80px rgba(0, 0, 0, 0.2) !important;
-  border-color: var(--primary-color) !important;
+  box-shadow: 0 25px 60px rgba(251, 191, 36, 0.3), 0 35px 80px rgba(0, 0, 0, 0.2) !important;
+  border-color: var(--accent-color) !important;
   animation: ombreShift 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -1215,24 +1732,55 @@ section {
 
 .pricing-card-enhanced:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
-  border-color: var(--primary-color);
+  box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2);
+  border-color: var(--accent-color);
 }
 
 .pricing-card-popular {
-  border: 2px solid var(--primary-color);
-  background: linear-gradient(135deg, var(--dark-card), rgba(139, 92, 246, 0.05));
+  border: 2px solid var(--accent-color);
+  background: linear-gradient(135deg, var(--dark-card), rgba(251, 191, 36, 0.05));
   position: relative;
 }
 
+.pricing-card-popular::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, var(--accent-color), var(--warning-color)) !important;
+  transform: scaleX(0) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 1 !important;
+}
+
 .pricing-card-popular::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(45deg, transparent 20%, rgba(251, 191, 36, 0.2) 40%, rgba(245, 158, 11, 0.3) 60%, rgba(251, 191, 36, 0.2) 80%, transparent 100%) !important;
+  transform: translateX(-100%) !important;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 1 !important;
+}
+
+.pricing-card-popular:hover::before {
+  transform: scaleX(1) !important;
+}
+
+.pricing-card-popular:hover::after {
+  transform: translateX(100%) !important;
+}
+
+.pricing-card-popular:hover {
+  transform: translateY(-15px) scale(1.02) !important;
+  box-shadow: 0 25px 60px rgba(251, 191, 36, 0.3), 0 35px 80px rgba(0, 0, 0, 0.2) !important;
+  border-color: var(--accent-color) !important;
+  animation: ombreShift 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .pricing-card.border-primary {
@@ -1740,25 +2288,96 @@ a.btn-gradient:focus * {
 }
 
 /* Social Links */
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
 .social-links a {
-  display: inline-block;
-  width: 35px; /* Giảm kích thước từ 40px xuống 35px */
-  height: 35px; /* Giảm kích thước từ 40px xuống 35px */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   background: var(--dark-card);
   border-radius: 50%;
-  text-align: center;
-  line-height: 35px; /* Điều chỉnh line-height */
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   color: var(--dark-text-secondary);
   border: 1px solid var(--accent-color);
-  box-shadow: 0 0 6px rgba(251, 191, 36, 0.15); /* Giảm box-shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.social-links a i {
+  font-size: 1.1rem;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit;
+  transition: all 0.3s ease;
+  pointer-events: none;
 }
 
 .social-links a:hover {
-  background: var(--primary-color);
-  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  transform: translateY(-2px);
   color: white;
-  animation: float 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+  border-color: var(--accent-color);
+}
+
+.social-links a:hover i {
+  color: white !important;
+  z-index: 15;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.social-links a:active {
+  transform: translateY(0) scale(0.95);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.5);
+}
+
+.social-links a:active i {
+  color: white !important;
+  z-index: 15;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+}
+
+.social-links a:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Mobile touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  .social-links a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .social-links a:active {
+    transform: scale(0.9);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    transition: transform 0.1s ease;
+  }
+  
+  .social-links a:active i {
+    color: white !important;
+    z-index: 15;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* Company Info */
@@ -1801,71 +2420,25 @@ a:hover {
       rgba(30, 30, 30, 0.98)
   ) !important;
   backdrop-filter: blur(20px);
-  border: 3px solid transparent; /* Tạo border trong suốt cho tất cả các cạnh */
-  background-image: 
-    linear-gradient(135deg, 
-      rgba(20, 20, 20, 0.98), 
-      rgba(30, 30, 30, 0.98)
-    ),
-    linear-gradient(90deg, 
-      var(--primary-color) 0%, 
-      var(--accent-color) 25%, 
-      var(--primary-color) 50%, 
-      var(--accent-color) 75%, 
-      var(--primary-color) 100%
-    );
-  background-clip: 
-    padding-box,
-    border-box;
+  border: none;
   box-shadow: 
     0 4px 25px rgba(0, 0, 0, 0.5), 
-    0 0 20px rgba(139, 92, 246, 0.1),
-    0 0 0 1px rgba(139, 92, 246, 0.2), /* Thêm glow effect */
-    inset 0 0 20px rgba(139, 92, 246, 0.05); /* Thêm inner glow */
+    0 0 20px rgba(139, 92, 246, 0.1);
   z-index: 1000;
-  min-height: 40px; /* Giảm chiều cao navbar xuống 40px */
-  padding: 0.1rem 0; /* Giảm padding xuống còn nhỏ hơn nữa */
+  min-height: 40px;
+  padding: 0.1rem 0;
   position: relative;
   overflow: hidden;
 }
 
-/* Thêm hiệu ứng ombre cho các cạnh navbar */
+/* Bỏ hiệu ứng ombre cho các cạnh navbar */
 .navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, 
-    transparent 0%, 
-    rgba(139, 92, 246, 0.1) 25%, 
-    rgba(251, 191, 36, 0.1) 50%, 
-    rgba(139, 92, 246, 0.1) 75%, 
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
-/* Thêm hiệu ứng ombre cho cạnh trên */
+/* Bỏ hiệu ứng ombre cho cạnh trên */
 .navbar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--primary-color) 20%, 
-    var(--accent-color) 40%, 
-    var(--primary-color) 60%, 
-    var(--accent-color) 80%, 
-    var(--primary-color) 100%
-  );
-  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
-  z-index: 1;
+  display: none;
 }
 
 .navbar-nav {
@@ -2013,22 +2586,15 @@ a:hover {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     padding: 1.5rem 1.2rem; /* Giảm padding */
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(139, 92, 246, 0.2);
+    border: none;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
     max-width: calc(100vw - 1rem);
   }
   
   .navbar-collapse::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    border-radius: 1.5rem 1.5rem 0 0;
+    display: none;
   }
   
   .navbar-nav {
@@ -2047,7 +2613,7 @@ a:hover {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: none;
     color: var(--dark-text) !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     background: rgba(255, 255, 255, 0.08);
@@ -2077,7 +2643,6 @@ a:hover {
   .nav-link:hover {
     background: rgba(139, 92, 246, 0.2);
     transform: translateX(5px) translateY(-3px);
-    border-color: rgba(139, 92, 246, 0.6);
     box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
     color: var(--primary-color) !important;
     text-shadow: 0 2px 6px rgba(139, 92, 246, 0.6);
@@ -2087,12 +2652,10 @@ a:hover {
   .nav-link.active {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     transform: translateX(5px) scale(1.05);
-    border-color: var(--accent-color);
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.5);
     color: white !important;
     font-weight: 700 !important;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-    border-width: 2px;
   }
   
   .nav-link.active::after {
@@ -2842,11 +3405,65 @@ a:hover {
   padding-left: 4mm !important;
 }
 
-/* FAQ Section Styling */
-.faq-section {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-secondary) 50%, var(--dark-bg) 100%);
-  position: relative;
-  overflow: hidden;
+/* Testimonial Card Styles */
+.testimonial-card {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+  border-radius: 1rem !important;
+  padding: 1.5rem !important;
+  margin-bottom: 1rem !important;
+  transition: all 0.3s ease !important;
+  height: 100% !important;
+  position: relative !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden !important;
+}
+
+.testimonial-card::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, var(--accent-color), var(--warning-color)) !important;
+  transform: scaleX(0) !important;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 1 !important;
+}
+
+.testimonial-card:hover::before {
+  transform: scaleX(1) !important;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 35px rgba(251, 191, 36, 0.2) !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Testimonial Avatar */
+.avatar-circle {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, var(--accent-color), var(--warning-color)) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3) !important;
+}
+
+.avatar-text {
+  font-size: 1.5rem !important;
+  color: white !important;
+}
+
+/* Testimonial Badge */
+.testimonial-industry .badge {
+  background: rgba(251, 191, 36, 0.2) !important;
+  color: var(--accent-color) !important;
+  border: 1px solid rgba(251, 191, 36, 0.3) !important;
 }
 
 .faq-bg-pattern {
@@ -3114,12 +3731,6 @@ a:hover {
   overflow: hidden;
 }
 
-.demo-tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 .demo-tab {
   display: flex;
   align-items: center;
@@ -3179,14 +3790,6 @@ a:hover {
   position: relative;
 }
 
-.demo-item {
-  display: none;
-  animation: fadeInUp 0.5s ease;
-}
-
-.demo-item.show {
-  display: block;
-}
 
 .demo-image-container {
   position: relative;
@@ -3466,83 +4069,15 @@ html {
   opacity: 1;
 }
 
-/* Breadcrumb Navigation Styles */
-.breadcrumb-nav {
-  background: linear-gradient(135deg, var(--dark-secondary), var(--dark-card));
-  border-bottom: 1px solid var(--dark-border);
-  padding: 1rem 0;
-  margin-top: 76px; /* Để tránh bị che bởi fixed navbar */
-  position: relative;
-  z-index: 999;
-}
 
-.breadcrumb {
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
-.breadcrumb-item {
-  color: var(--dark-text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
 
-.breadcrumb-item:not(:last-child)::after {
-  content: '/';
-  color: var(--dark-border);
-  margin-left: 0.5rem;
-  font-weight: 300;
-}
 
-.breadcrumb-item.active {
-  color: var(--primary-color);
-  font-weight: 600;
-}
 
-.breadcrumb-link {
-  color: var(--dark-text-secondary);
-  text-decoration: none;
-  transition: all var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
 
-.breadcrumb-link:hover {
-  color: var(--primary-color);
-  text-decoration: none;
-  transform: translateX(2px);
-}
 
-.breadcrumb-link i {
-  font-size: 0.8rem;
-  color: var(--primary-color);
-}
 
-/* Responsive Breadcrumb */
-@media (max-width: 768px) {
-  .breadcrumb-nav {
-    margin-top: 70px;
-    padding: 0.75rem 0;
-  }
-  
-  .breadcrumb {
-    font-size: 0.85rem;
-  }
-  
-  .breadcrumb-item {
-    font-size: 0.85rem;
-  }
-}
 
-/* Animation for breadcrumb */
-.breadcrumb-nav {
-  animation: slideDown 0.3s ease-out;
-}
 
 @keyframes slideDown {
   from {
@@ -3555,27 +4090,286 @@ html {
   }
 }
 
-/* Page Content Spacing for Pages with Breadcrumb */
-.breadcrumb-nav + main {
-  padding-top: 1rem;
+
+/* Enhanced Navigation Scroll Spy Effects */
+.nav-link {
+  position: relative;
+  overflow: visible; /* Thay đổi từ hidden để viền có thể hiển thị */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Ensure proper spacing for fixed navbar */
-.navbar + main,
-.navbar + .breadcrumb-nav + main {
-  padding-top: 0; /* Không cần padding-top vì đã có breadcrumb */
+/* Đảm bảo button có overflow visible */
+button.nav-link {
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Đảm bảo navbar không cắt viền */
+.navbar {
+  overflow: visible !important;
+}
+
+.navbar .container-fluid {
+  overflow: visible !important;
+}
+
+.navbar .d-flex {
+  overflow: visible !important;
+}
+
+/* Đảm bảo container không cắt viền */
+.navbar-nav,
+.nav-item {
+  overflow: visible !important;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link:hover::before {
+  left: 100%;
+}
+
+/* Đảm bảo text hiển thị trên cùng - Target cả button và nav-link */
+.nav-link.active,
+button.nav-link.active {
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+  transform: translateY(-1px);
+  position: relative;
+  z-index: 2;
+}
+
+/* Đảm bảo nội dung button hiển thị trên cùng */
+.nav-link.active button,
+.nav-link.active,
+button.nav-link.active {
+  position: relative;
+  z-index: 3;
+  background: inherit;
+}
+
+/* Bỏ hiệu ứng viền xoay */
+.nav-link.active::after,
+button.nav-link.active::after {
+  display: none;
+}
+
+/* Bỏ border debug và animation */
+.nav-link.active,
+button.nav-link.active {
+  border: none !important;
+  animation: none;
+}
+
+/* Animation cho viền xoay */
+@keyframes borderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bỏ hiệu ứng gradient chạy theo viền */
+.nav-link.active::before,
+button.nav-link.active::before {
+  display: none;
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+@keyframes activePulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 193, 7, 0.5);
+  }
+}
+
+/* Enhanced mobile navigation */
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    margin: 0.25rem 0;
+    border-radius: 0.5rem;
+  }
+  
+  .navbar-nav .nav-link.active,
+  .navbar-nav button.nav-link.active {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+    z-index: 2;
+  }
+  
+  /* Bỏ mobile version của viền chạy theo */
+  .navbar-nav .nav-link.active::after,
+  .navbar-nav button.nav-link.active::after {
+    display: none;
+  }
+  
+  /* Bỏ mobile gradient flow */
+  .navbar-nav .nav-link.active::before,
+  .navbar-nav button.nav-link.active::before {
+    display: none;
+  }
+}
+
+@keyframes mobileBorderRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes mobileGradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+    opacity: 0.8;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 1;
+  }
 }
 
 /* Hero section spacing adjustment */
-.breadcrumb-nav + main .bg-gradient-to-br {
-  margin-top: 0;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .breadcrumb-nav + main {
-    padding-top: 0.5rem;
+  .hero-section {
+    min-height: 70vh;
+    padding: 1rem 0;
+    padding-top: 32px !important; /* Điều chỉnh padding-top cho navbar thu gọn trên mobile */
+    padding-bottom: 2mm !important;
+    text-align: center;
+    overflow: visible !important;
+    position: relative !important;
   }
+  
+  .hero-section .display-4 {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+  
+  .hero-section .lead {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-section .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    margin-top: 3mm !important;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  .hero-section .d-flex.gap-3 {
+    flex-direction: column;
+    gap: 0.5rem !important;
+    margin-top: 3mm !important;
+  }
+  
+  .hero-section .hero-image-static {
+    margin-top: 7mm !important;
+    margin-bottom: 2mm !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+  
+  .hero-image-static img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Tab Indicator Navigation Styles */
+.tabs {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  padding: 10px 14px;
+  background: #141218;
+  border-radius: 12px;
+  --x: 0px;
+  --w: 0px;
+  --h: 36px;
+  --r: 10px;
+}
+
+/* Nút tab */
+.tab {
+  position: relative;
+  z-index: 3;
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  color: #eae7ff;
+  border-radius: 10px;
+  font: 500 14px/1 system-ui;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+/* Chỉ báo dùng chung (di chuyển theo --x/--w) */
+.indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: var(--h);
+  width: var(--w);
+  transform: translate(calc(var(--x)), -50%);
+  border-radius: var(--r);
+  transition: transform 0.18s ease, width 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+/* Phần phát sáng (gradient + blur) */
+.glow {
+  z-index: 1;
+  background: linear-gradient(90deg, #f59e0b, #a855f7);
+  filter: blur(0.0px);
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.55), 0 0 12px rgba(245, 158, 11, 0.35) inset;
+}
+
+/* Viền tím (outline) - Bỏ viền trong suốt */
+.outline {
+  z-index: 2;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Trạng thái nút đang chọn để tô chữ đậm */
+.tab.is-active {
+  color: #fff;
+  font-weight: 600;
 }
 
 /* Enhanced Navigation Hover Effects */
@@ -3608,6 +4402,180 @@ html {
   transform: scale(1.1) rotate(5deg);
 }
 
+/* FAQ Section Dark Background Fix */
+#faq {
+  background-color: var(--dark-card) !important;
+  color: var(--dark-text) !important;
+}
+
+#faq .container {
+  background-color: transparent !important;
+}
+
+#faq .row {
+  background-color: transparent !important;
+}
+
+#faq .col-lg-10 {
+  background-color: transparent !important;
+}
+
+/* Force FAQ section background with higher specificity */
+section#faq.bg-card {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Override any Bootstrap background classes for FAQ */
+section#faq.bg-card.py-5 {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Demo Section Dark Background Fix */
+#demo {
+  background-color: var(--dark-card) !important;
+  color: var(--dark-text) !important;
+}
+
+#demo .container {
+  background-color: transparent !important;
+}
+
+#demo .row {
+  background-color: transparent !important;
+}
+
+/* Force Demo section background with higher specificity */
+section#demo.bg-card {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Override any Bootstrap background classes for Demo */
+section#demo.bg-card.py-5 {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Demo Interface Dark Theme */
+.demo-interface {
+  background: var(--dark-card) !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--dark-border);
+}
+
+.demo-header {
+  background: var(--dark-secondary) !important;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.demo-main-content {
+  background: var(--dark-card) !important;
+  padding: 1.5rem;
+}
+
+.demo-content-area {
+  background: transparent !important;
+}
+
+.demo-dashboard-section {
+  background: var(--dark-card) !important;
+  padding: 1.5rem;
+  border-top: 1px solid var(--dark-border);
+}
+
+.demo-dashboard-card {
+  background: var(--dark-secondary) !important;
+  border: 1px solid var(--dark-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Demo Sidebar Dark Theme */
+.demo-sidebar {
+  background: var(--dark-secondary) !important;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--dark-border);
+}
+
+.demo-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-menu-item {
+  color: var(--dark-text-secondary) !important;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.demo-menu-item:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Demo Links */
+.demo-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.demo-link {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.demo-link:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Demo Navbar Dark Theme */
+.demo-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent !important;
+}
+
+.demo-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demo-nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.demo-nav-link {
+  color: var(--dark-text-secondary) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.demo-nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+.demo-user {
+  color: var(--dark-text-secondary) !important;
+}
+
 .navbar-nav .nav-link.active i {
   transform: scale(1.1);
   color: var(--primary-color);
@@ -3635,11 +4603,6 @@ html {
   border-radius: var(--border-radius);
 }
 
-.breadcrumb-link:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-  border-radius: var(--border-radius);
-}
 
 /* Menu separator styling */
 .menu-separator {
@@ -3697,4 +4660,178 @@ html {
 
 .navbar-nav .nav-link:hover i {
   transform: scale(1.1) rotate(5deg);
+}
+
+/* FAQ Section Dark Background Fix */
+#faq {
+  background-color: var(--dark-card) !important;
+  color: var(--dark-text) !important;
+}
+
+#faq .container {
+  background-color: transparent !important;
+}
+
+#faq .row {
+  background-color: transparent !important;
+}
+
+#faq .col-lg-10 {
+  background-color: transparent !important;
+}
+
+/* Force FAQ section background with higher specificity */
+section#faq.bg-card {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Override any Bootstrap background classes for FAQ */
+section#faq.bg-card.py-5 {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Demo Section Dark Background Fix */
+#demo {
+  background-color: var(--dark-card) !important;
+  color: var(--dark-text) !important;
+}
+
+#demo .container {
+  background-color: transparent !important;
+}
+
+#demo .row {
+  background-color: transparent !important;
+}
+
+/* Force Demo section background with higher specificity */
+section#demo.bg-card {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Override any Bootstrap background classes for Demo */
+section#demo.bg-card.py-5 {
+  background-color: var(--dark-card) !important;
+  background: var(--dark-card) !important;
+}
+
+/* Demo Interface Dark Theme */
+.demo-interface {
+  background: var(--dark-card) !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--dark-border);
+}
+
+.demo-header {
+  background: var(--dark-secondary) !important;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.demo-main-content {
+  background: var(--dark-card) !important;
+  padding: 1.5rem;
+}
+
+.demo-content-area {
+  background: transparent !important;
+}
+
+.demo-dashboard-section {
+  background: var(--dark-card) !important;
+  padding: 1.5rem;
+  border-top: 1px solid var(--dark-border);
+}
+
+.demo-dashboard-card {
+  background: var(--dark-secondary) !important;
+  border: 1px solid var(--dark-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Demo Sidebar Dark Theme */
+.demo-sidebar {
+  background: var(--dark-secondary) !important;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--dark-border);
+}
+
+.demo-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-menu-item {
+  color: var(--dark-text-secondary) !important;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.demo-menu-item:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Demo Links */
+.demo-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.demo-link {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.demo-link:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Demo Navbar Dark Theme */
+.demo-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent !important;
+}
+
+.demo-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demo-nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.demo-nav-link {
+  color: var(--dark-text-secondary) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.demo-nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+.demo-user {
+  color: var(--dark-text-secondary) !important;
 }

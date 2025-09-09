@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
+import ToastContainer from "@/components/ui/ToastContainer";
 
 export const metadata: Metadata = {
   title: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
@@ -62,11 +63,15 @@ export default function RootLayout({
         <Navigation />
         {children}
         
+        {/* Toast Container */}
+        <ToastContainer />
+        
         {/* Bootstrap JS */}
         <script 
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossOrigin="anonymous"
+          async
         />
       </body>
     </html>

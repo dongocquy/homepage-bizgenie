@@ -1,18 +1,61 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useScrollSpy } from '@/hooks/useScrollSpy';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLSpanElement>(null);
+  const outlineRef = useRef<HTMLSpanElement>(null);
+
+  // Danh sách các section trên trang chủ
+  const sectionIds = ['hero', 'features', 'benefits', 'demo', 'pricing', 'faq'];
+  const activeSection = useScrollSpy(sectionIds);
+
+  // Hàm di chuyển indicator
+  const moveIndicator = (element: HTMLElement) => {
+    if (!navRef.current || !element) return;
+    
+    const rect = element.getBoundingClientRect();
+    const navRect = navRef.current.getBoundingClientRect();
+    const x = rect.left - navRect.left;
+    const w = rect.width;
+    
+    navRef.current.style.setProperty('--x', `${x}px`);
+    navRef.current.style.setProperty('--w', `${w}px`);
+  };
+
+  // Effect để di chuyển indicator khi activeSection thay đổi
+  useEffect(() => {
+    if (!navRef.current) return;
+    
+    const activeButton = navRef.current.querySelector(`[data-section="${activeSection}"]`) as HTMLElement;
+    if (activeButton) {
+      moveIndicator(activeButton);
+    }
+  }, [activeSection]);
+
+  const scrollToSection = (sectionId: string) => {
+    // Kiểm tra nếu đang chạy trên client-side
+    if (typeof window === 'undefined') return;
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Offset cho fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleDropdown = (dropdownName: string) => {
-    setOpenDropdown(openDropdown === dropdownName ? null : dropdownName);
   };
 
   return (
@@ -28,59 +71,77 @@ const Navigation = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation với Tab Indicator */}
         <div className="d-none d-lg-flex align-items-center">
-          <ul className="navbar-nav d-flex flex-row">
-            <li className="nav-item mx-2">
-              <Link href="/" className="nav-link fw-medium">
-                Trang chủ
-              </Link>
-            </li>
-            <li className="nav-item dropdown mx-2">
-              <button 
-                className="nav-link dropdown-toggle fw-medium border-0 bg-transparent" 
-                onClick={() => toggleDropdown('sanpham')}
-                aria-expanded={openDropdown === 'sanpham'}
-              >
-                Sản phẩm
-              </button>
-              <ul className={`dropdown-menu ${openDropdown === 'sanpham' ? 'show' : ''}`}>
-                <li><Link href="/features" className="dropdown-item">Tính năng</Link></li>
-                <li><Link href="/pricing" className="dropdown-item">Bảng giá</Link></li>
-                <li><Link href="/demo" className="dropdown-item">Demo</Link></li>
-              </ul>
-            </li>
-            <li className="nav-item dropdown mx-2">
-              <button 
-                className="nav-link dropdown-toggle fw-medium border-0 bg-transparent" 
-                onClick={() => toggleDropdown('tainguyen')}
-                aria-expanded={openDropdown === 'tainguyen'}
-              >
-                Tài nguyên
-              </button>
-              <ul className={`dropdown-menu ${openDropdown === 'tainguyen' ? 'show' : ''}`}>
-                <li><Link href="/blog" className="dropdown-item">Blog</Link></li>
-                <li><Link href="/docs" className="dropdown-item">Tài liệu</Link></li>
-                <li><Link href="/tutorials" className="dropdown-item">Hướng dẫn</Link></li>
-                <li><Link href="/api" className="dropdown-item">API</Link></li>
-              </ul>
-            </li>
-            <li className="nav-item mx-2">
-              <Link href="/about" className="nav-link fw-medium">
-                Giới thiệu
-              </Link>
-            </li>
-            <li className="nav-item mx-2">
-              <Link href="/contact" className="nav-link fw-medium">
-                Liên hệ
-              </Link>
-            </li>
-            <li className="nav-item mx-2">
-              <Link href="/support" className="nav-link fw-medium">
-                Hỗ trợ
-              </Link>
-            </li>
-          </ul>
+          <nav 
+            ref={navRef}
+            className="tabs"
+            style={{
+              '--x': '0px',
+              '--w': '0px', 
+              '--h': '36px',
+              '--r': '10px'
+            } as React.CSSProperties}
+          >
+            <button 
+              data-section="hero"
+              className={`tab ${activeSection === 'hero' ? 'is-active' : ''}`}
+              onClick={() => scrollToSection('hero')}
+              onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+              onFocus={(e) => moveIndicator(e.currentTarget)}
+            >
+              Trang chủ
+            </button>
+            <button 
+              data-section="features"
+              className={`tab ${activeSection === 'features' ? 'is-active' : ''}`}
+              onClick={() => scrollToSection('features')}
+              onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+              onFocus={(e) => moveIndicator(e.currentTarget)}
+            >
+              Tính năng
+            </button>
+            <button 
+              data-section="benefits"
+              className={`tab ${activeSection === 'benefits' ? 'is-active' : ''}`}
+              onClick={() => scrollToSection('benefits')}
+              onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+              onFocus={(e) => moveIndicator(e.currentTarget)}
+            >
+              Lợi ích
+            </button>
+            <button 
+              data-section="demo"
+              className={`tab ${activeSection === 'demo' ? 'is-active' : ''}`}
+              onClick={() => scrollToSection('demo')}
+              onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+              onFocus={(e) => moveIndicator(e.currentTarget)}
+            >
+              Demo
+            </button>
+            <button 
+              data-section="pricing"
+              className={`tab ${activeSection === 'pricing' ? 'is-active' : ''}`}
+              onClick={() => scrollToSection('pricing')}
+              onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+              onFocus={(e) => moveIndicator(e.currentTarget)}
+            >
+              Bảng giá
+            </button>
+            <button 
+              data-section="faq"
+              className={`tab ${activeSection === 'faq' ? 'is-active' : ''}`}
+              onClick={() => scrollToSection('faq')}
+              onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+              onFocus={(e) => moveIndicator(e.currentTarget)}
+            >
+              FAQ
+            </button>
+
+            {/* 2 lớp chỉ báo dùng chung */}
+            <span ref={glowRef} className="indicator glow"></span>
+            <span ref={outlineRef} className="indicator outline"></span>
+          </nav>
           
         </div>
 
@@ -100,22 +161,118 @@ const Navigation = () => {
             <div className="container py-3">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link href="/" className="nav-link fw-medium py-2 text-light">Trang chủ</Link>
+                  <button 
+                    onClick={() => {
+                      scrollToSection('hero');
+                      setIsMenuOpen(false);
+                    }}
+                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
+                      activeSection === 'hero' 
+                        ? 'text-white fw-bold shadow-lg active' 
+                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    }`}
+                    style={activeSection === 'hero' ? {
+                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
+                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+                    } : {}}
+                  >
+                    Trang chủ
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <Link href="/features" className="nav-link fw-medium py-2 text-light">Tính năng</Link>
+                  <button 
+                    onClick={() => {
+                      scrollToSection('features');
+                      setIsMenuOpen(false);
+                    }}
+                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
+                      activeSection === 'features' 
+                        ? 'text-white fw-bold shadow-lg active' 
+                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    }`}
+                    style={activeSection === 'features' ? {
+                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
+                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+                    } : {}}
+                  >
+                    Tính năng
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <Link href="/pricing" className="nav-link fw-medium py-2 text-light">Bảng giá</Link>
+                  <button 
+                    onClick={() => {
+                      scrollToSection('benefits');
+                      setIsMenuOpen(false);
+                    }}
+                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
+                      activeSection === 'benefits' 
+                        ? 'text-white fw-bold shadow-lg active' 
+                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    }`}
+                    style={activeSection === 'benefits' ? {
+                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
+                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+                    } : {}}
+                  >
+                    Lợi ích
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <Link href="/about" className="nav-link fw-medium py-2 text-light">Giới thiệu</Link>
+                  <button 
+                    onClick={() => {
+                      scrollToSection('demo');
+                      setIsMenuOpen(false);
+                    }}
+                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
+                      activeSection === 'demo' 
+                        ? 'text-white fw-bold shadow-lg active' 
+                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    }`}
+                    style={activeSection === 'demo' ? {
+                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
+                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+                    } : {}}
+                  >
+                    Demo
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <Link href="/contact" className="nav-link fw-medium py-2 text-light">Liên hệ</Link>
+                  <button 
+                    onClick={() => {
+                      scrollToSection('pricing');
+                      setIsMenuOpen(false);
+                    }}
+                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
+                      activeSection === 'pricing' 
+                        ? 'text-white fw-bold shadow-lg active' 
+                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    }`}
+                    style={activeSection === 'pricing' ? {
+                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
+                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+                    } : {}}
+                  >
+                    Bảng giá
+                  </button>
                 </li>
                 <li className="nav-item">
-                  <Link href="/support" className="nav-link fw-medium py-2 text-light">Hỗ trợ</Link>
+                  <button 
+                    onClick={() => {
+                      scrollToSection('faq');
+                      setIsMenuOpen(false);
+                    }}
+                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
+                      activeSection === 'faq' 
+                        ? 'text-white fw-bold shadow-lg active' 
+                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    }`}
+                    style={activeSection === 'faq' ? {
+                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
+                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+                    } : {}}
+                  >
+                    FAQ
+                  </button>
                 </li>
               </ul>
             </div>
