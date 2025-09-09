@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useScrollSpy } from '@/hooks/useScrollSpy';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +11,28 @@ const Navigation = () => {
 
   // Danh sách các section trên trang chủ
   const sectionIds = ['hero', 'features', 'benefits', 'demo', 'pricing', 'faq'];
-  const activeSection = useScrollSpy(sectionIds);
+  const [activeSection, setActiveSection] = useState('hero');
+  
+  // Simple scroll spy implementation
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      const scrollPosition = window.scrollY + 100;
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sectionIds]);
 
   // Hàm di chuyển indicator
   const moveIndicator = (element: HTMLElement) => {

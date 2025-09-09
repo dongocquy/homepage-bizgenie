@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import ToastContainer from "@/components/ui/ToastContainer";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
@@ -76,6 +77,9 @@ export default function RootLayout({
         
         {/* Toast Container */}
         <ToastContainer />
+        
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
         
         {/* Bootstrap JS */}
         <script 

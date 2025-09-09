@@ -2,6 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scroll to Top Button - Mobile Optimized */
+.scroll-to-top-btn {
+  /* Mobile-first approach */
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  
+  /* Touch-friendly size */
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  
+  /* Visual styling */
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  
+  /* Animation */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  
+  /* Touch optimization */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  
+  /* Flexbox centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-top-btn:hover {
+  background-color: #7c3aed;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.scroll-to-top-btn:active {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+/* Desktop styles */
+@media (min-width: 640px) {
+  .scroll-to-top-btn {
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1024px) {
+  .scroll-to-top-btn {
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+}
+
+/* Hide on very small screens if needed */
+@media (max-width: 320px) {
+  .scroll-to-top-btn {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
 /* Reset và đảm bảo Bootstrap hoạt động */
 * {
   box-sizing: border-box;
@@ -2270,21 +2349,63 @@ a.btn-gradient:focus * {
   box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
-/* Contact Info */
-.contact-info {
-  background: var(--dark-card);
-  padding: 1rem; /* Giảm padding từ 1.5rem xuống 1rem */
-  border-radius: 0.75rem; /* Giảm border-radius */
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.15); /* Giảm box-shadow */
+/* Support Section */
+.support-section {
+  margin-bottom: 1rem;
 }
 
-.contact-info .d-flex {
-  padding: 0.5rem 0; /* Giảm padding từ 0.75rem xuống 0.5rem */
-  border-bottom: 1px solid var(--dark-border);
+.support-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.contact-info .d-flex:last-child {
-  border-bottom: none;
+.support-link {
+  color: var(--dark-text-secondary) !important;
+  text-decoration: none !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0;
+}
+
+.support-link:hover {
+  color: var(--primary-color) !important;
+  transform: translateX(5px);
+}
+
+/* Contact Section */
+.contact-section {
+  margin-bottom: 1rem;
+}
+
+.contact-info-simple {
+  /* Không có background và border */
+}
+
+.contact-item-simple {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  /* Không có border-bottom */
+}
+
+.contact-icon {
+  color: #FFD700 !important; /* Màu vàng như trong hình */
+  font-size: 1.1rem;
+  margin-right: 0.75rem;
+  min-width: 20px;
+}
+
+.contact-text {
+  color: var(--dark-text-secondary) !important;
+  text-decoration: none !important;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: all 0.3s ease;
+}
+
+.contact-text:hover {
+  color: var(--primary-color) !important;
 }
 
 /* Social Links */
@@ -2292,6 +2413,15 @@ a.btn-gradient:focus * {
   display: flex;
   gap: 0.75rem;
   align-items: center;
+}
+
+/* Footer Social Links */
+.social-links-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .social-links a {
@@ -2361,22 +2491,88 @@ a.btn-gradient:focus * {
 
 /* Mobile touch improvements */
 @media (hover: none) and (pointer: coarse) {
-  .social-links a {
+  .social-links a,
+  .social-links-desktop a,
+  .social-links-mobile a {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
   
-  .social-links a:active {
+  .social-links a:active,
+  .social-links-desktop a:active,
+  .social-links-mobile a:active {
     transform: scale(0.9);
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: white;
     transition: transform 0.1s ease;
   }
   
-  .social-links a:active i {
+  .social-links a:active i,
+  .social-links-desktop a:active i,
+  .social-links-mobile a:active i {
     color: white !important;
     z-index: 15;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Footer Social Links Styling */
+.social-links-footer a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--dark-card);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: var(--dark-text-secondary);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.social-links-footer a:hover {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  transform: translateY(-2px);
+  color: white;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+  border-color: var(--accent-color);
+}
+
+.social-links-footer a i {
+  font-size: 1.1rem;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.social-links-footer a:hover i {
+  color: white !important;
+  z-index: 15;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* Mobile responsive adjustments for footer social links */
+@media (max-width: 991.98px) {
+  .social-links-footer {
+    padding: 1.5rem 0;
+  }
+  
+  .social-links-footer a {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .social-links-footer a i {
+    font-size: 1.2rem;
   }
 }
 

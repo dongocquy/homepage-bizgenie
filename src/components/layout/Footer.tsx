@@ -62,67 +62,69 @@ const Footer: React.FC = () => {
             </div>
           </div>
           
-          <div className="col-lg-2 col-md-6">
-            <h6 className="fw-bold mb-3">Sản phẩm</h6>
-            <ul className="list-unstyled">
-              <li className="mb-2"><Link href="#features" className="text-secondary text-decoration-none">Tính năng</Link></li>
-              <li className="mb-2"><Link href="#benefits" className="text-secondary text-decoration-none">Lợi ích</Link></li>
-              <li className="mb-2"><Link href="#pricing" className="text-secondary text-decoration-none">Bảng giá</Link></li>
-              <li><Link href="#" className="text-secondary text-decoration-none">Tài liệu</Link></li>
-            </ul>
-          </div>
           
-          <div className="col-lg-2 col-md-6">
-            <h6 className="fw-bold mb-3">Hỗ trợ</h6>
-            <ul className="list-unstyled">
-              <li className="mb-2"><Link href="#" className="text-secondary text-decoration-none">Trung tâm trợ giúp</Link></li>
-              <li className="mb-2"><Link href="#" className="text-secondary text-decoration-none">Video hướng dẫn</Link></li>
-              <li className="mb-2"><Link href="#faq" className="text-secondary text-decoration-none">FAQ</Link></li>
-              <li><Link href="#contact" className="text-secondary text-decoration-none">Liên hệ</Link></li>
-            </ul>
-          </div>
-          
-          <div className="col-lg-4">
-            <h6 className="fw-bold mb-3">Liên hệ</h6>
-            <div className="contact-info">
-              <div className="d-flex align-items-center mb-3">
-                <i className="fas fa-map-marker-alt text-accent me-2"></i>
-                <span className="text-secondary">Số 4 Phan Huy Ôn, Phường Trung Mỹ Tây, Quận 12, TP.HCM</span>
+          {/* Support and Contact Section */}
+          <div className="col-lg-8">
+            <div className="row g-4">
+              {/* Support Column */}
+              <div className="col-lg-6">
+                <div className="support-section">
+                  <h6 className="fw-bold mb-3 text-white">Hỗ trợ</h6>
+                  <div className="support-links">
+                    <Link href="#" className="support-link">Trung tâm trợ giúp</Link>
+                    <Link href="#" className="support-link">Video hướng dẫn</Link>
+                    <Link href="#faq" className="support-link">FAQ</Link>
+                    <Link href="#contact" className="support-link">Liên hệ</Link>
+                  </div>
+                </div>
               </div>
-              <div className="d-flex align-items-center mb-3">
-                <i className="fas fa-phone text-accent me-2"></i>
-                <a href="tel:0328866539" className="text-secondary text-decoration-none">032 8866 539</a>
-              </div>
-              <div className="d-flex align-items-center mb-3">
-                <i className="fas fa-mobile-alt text-accent me-2"></i>
-                <a href="tel:0917787708" className="text-secondary text-decoration-none">091 778 7708</a>
-              </div>
-              <div className="d-flex align-items-center mb-3">
-                <i className="fas fa-envelope text-accent me-2"></i>
-                <a href="mailto:contact@bizgenie.vn" className="text-secondary text-decoration-none">contact@bizgenie.vn</a>
-              </div>
-              <div className="d-flex align-items-center">
-                <i className="fab fa-zalo text-accent me-2"></i>
-                <a href="https://zalo.me/0917787708" target="_blank" className="text-secondary text-decoration-none">Zalo: 091 778 7708</a>
+              
+              {/* Contact Column */}
+              <div className="col-lg-6">
+                <div className="contact-section">
+                  <h6 className="fw-bold mb-3 text-white">Liên hệ</h6>
+                  <div className="contact-info-simple">
+                    <div className="contact-item-simple">
+                      <i className="fas fa-map-marker-alt contact-icon"></i>
+                      <span className="contact-text">Số 4 Phan Huy Ôn, Phường Trung Mỹ Tây, Quận 12, TP.HCM</span>
+                    </div>
+                    <div className="contact-item-simple">
+                      <i className="fas fa-phone contact-icon"></i>
+                      <a href="tel:0328866539" className="contact-text">032 8866 539</a>
+                    </div>
+                    <div className="contact-item-simple">
+                      <i className="fas fa-mobile-alt contact-icon"></i>
+                      <a href="tel:0917787708" className="contact-text">091 778 7708</a>
+                    </div>
+                    <div className="contact-item-simple">
+                      <i className="fas fa-envelope contact-icon"></i>
+                      <a href="mailto:contact@bizgenie.vn" className="contact-text">contact@bizgenie.vn</a>
+                    </div>
+                    <div className="contact-item-simple">
+                      <span className="contact-text">Zalo: 091 778 7708</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             
-            {/* Social Media Links */}
-            <div className="social-links mt-3">
-              <a href="https://facebook.com/bizhkd" target="_blank" title="Facebook">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://youtube.com/@bizhkd" target="_blank" title="YouTube">
-                <i className="fab fa-youtube"></i>
-              </a>
-              <a href="https://linkedin.com/bizhkd" target="_blank" title="LinkedIn">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="https://zalo.me/0917787708" target="_blank" title="Zalo">
-                <i className="fab fa-zalo"></i>
-              </a>
-            </div>
           </div>
+        </div>
+        
+        {/* Social Media Links */}
+        <div className="social-links-footer mt-4 text-center">
+          <a href="https://facebook.com/bizhkd" target="_blank" title="Facebook">
+            <i className="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://youtube.com/@bizhkd" target="_blank" title="YouTube">
+            <i className="fab fa-youtube"></i>
+          </a>
+          <a href="https://linkedin.com/bizhkd" target="_blank" title="LinkedIn">
+            <i className="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://zalo.me/0917787708" target="_blank" title="Zalo">
+            <i className="fab fa-zalo"></i>
+          </a>
         </div>
         
         <hr className="my-4" />
