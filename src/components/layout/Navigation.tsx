@@ -58,6 +58,28 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Đóng menu khi click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      // Ngăn scroll khi menu mở
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style={{backgroundColor: '#212529'}}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
@@ -148,130 +170,124 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         <div className="d-lg-none">
           <button
-            className="navbar-toggler border-0"
+            className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`}
             type="button"
             onClick={toggleMenu}
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
           </button>
           
+          {/* Mobile Menu Backdrop */}
+          {isMenuOpen && (
+            <div 
+              className="mobile-menu-backdrop"
+              onClick={() => setIsMenuOpen(false)}
+            />
+          )}
+          
           {/* Mobile Menu */}
-          <div className={`position-absolute top-100 start-0 w-100 bg-dark shadow-lg ${isMenuOpen ? 'd-block' : 'd-none'}`} style={{zIndex: 1000}}>
-            <div className="container py-3">
-              <ul className="navbar-nav">
-                <li className="nav-item">
+          <div className={`mobile-menu ${isMenuOpen ? 'show' : ''}`}>
+            <div className="mobile-menu-header">
+              <div className="mobile-menu-brand">
+                <span className="fw-bold text-light fs-5">BizHKD</span>
+                <div className="small text-light opacity-75">AI Kế Toán</div>
+              </div>
+              <button 
+                className="mobile-menu-close"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+            
+            <div className="mobile-menu-content">
+              <ul className="mobile-nav-list">
+                <li className="mobile-nav-item">
                   <button 
                     onClick={() => {
                       scrollToSection('hero');
                       setIsMenuOpen(false);
                     }}
-                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
-                      activeSection === 'hero' 
-                        ? 'text-white fw-bold shadow-lg active' 
-                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    className={`mobile-nav-link ${
+                      activeSection === 'hero' ? 'active' : ''
                     }`}
-                    style={activeSection === 'hero' ? {
-                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
-                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
-                    } : {}}
                   >
-                    Trang chủ
+                    <i className="fas fa-home mobile-nav-icon"></i>
+                    <span>Trang chủ</span>
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <button 
                     onClick={() => {
                       scrollToSection('features');
                       setIsMenuOpen(false);
                     }}
-                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
-                      activeSection === 'features' 
-                        ? 'text-white fw-bold shadow-lg active' 
-                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    className={`mobile-nav-link ${
+                      activeSection === 'features' ? 'active' : ''
                     }`}
-                    style={activeSection === 'features' ? {
-                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
-                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
-                    } : {}}
                   >
-                    Tính năng
+                    <i className="fas fa-cogs mobile-nav-icon"></i>
+                    <span>Tính năng</span>
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <button 
                     onClick={() => {
                       scrollToSection('benefits');
                       setIsMenuOpen(false);
                     }}
-                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
-                      activeSection === 'benefits' 
-                        ? 'text-white fw-bold shadow-lg active' 
-                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    className={`mobile-nav-link ${
+                      activeSection === 'benefits' ? 'active' : ''
                     }`}
-                    style={activeSection === 'benefits' ? {
-                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
-                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
-                    } : {}}
                   >
-                    Lợi ích
+                    <i className="fas fa-star mobile-nav-icon"></i>
+                    <span>Lợi ích</span>
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <button 
                     onClick={() => {
                       scrollToSection('demo');
                       setIsMenuOpen(false);
                     }}
-                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
-                      activeSection === 'demo' 
-                        ? 'text-white fw-bold shadow-lg active' 
-                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    className={`mobile-nav-link ${
+                      activeSection === 'demo' ? 'active' : ''
                     }`}
-                    style={activeSection === 'demo' ? {
-                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
-                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
-                    } : {}}
                   >
-                    Demo
+                    <i className="fas fa-play mobile-nav-icon"></i>
+                    <span>Demo</span>
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <button 
                     onClick={() => {
                       scrollToSection('pricing');
                       setIsMenuOpen(false);
                     }}
-                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
-                      activeSection === 'pricing' 
-                        ? 'text-white fw-bold shadow-lg active' 
-                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    className={`mobile-nav-link ${
+                      activeSection === 'pricing' ? 'active' : ''
                     }`}
-                    style={activeSection === 'pricing' ? {
-                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
-                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
-                    } : {}}
                   >
-                    Bảng giá
+                    <i className="fas fa-tags mobile-nav-icon"></i>
+                    <span>Bảng giá</span>
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="mobile-nav-item">
                   <button 
                     onClick={() => {
                       scrollToSection('faq');
                       setIsMenuOpen(false);
                     }}
-                    className={`nav-link fw-medium py-2  bg-transparent w-100 text-start transition-all duration-300 px-3 rounded ${
-                      activeSection === 'faq' 
-                        ? 'text-white fw-bold shadow-lg active' 
-                        : 'text-light hover:text-primary hover:bg-primary hover:bg-opacity-10'
+                    className={`mobile-nav-link ${
+                      activeSection === 'faq' ? 'active' : ''
                     }`}
-                    style={activeSection === 'faq' ? {
-                      background: 'linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%)',
-                      boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
-                    } : {}}
                   >
-                    FAQ
+                    <i className="fas fa-question-circle mobile-nav-icon"></i>
+                    <span>FAQ</span>
                   </button>
                 </li>
               </ul>
