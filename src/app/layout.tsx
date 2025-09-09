@@ -52,12 +52,23 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
         
-        {/* Meta tags for mobile */}
+        {/* PWA Meta tags */}
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="BizHKD" />
         <meta name="msapplication-TileColor" content="#8b5cf6" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="format-detection" content="telephone=no" />
+        
+        {/* PWA Theme */}
+        <meta name="theme-color" content="#8b5cf6" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        
+        {/* Apple Touch Icons */}
+        <link rel="apple-touch-icon" href="/icon-192x192.svg" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/icon-192x192.svg" />
+        <link rel="apple-touch-icon" sizes="512x512" href="/icon-512x512.svg" />
       </head>
       <body>
         <Navigation />
@@ -72,6 +83,25 @@ export default function RootLayout({
           integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
           crossOrigin="anonymous"
           async
+        />
+        
+        {/* Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
         />
       </body>
     </html>
