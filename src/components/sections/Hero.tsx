@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
             <p className="lead mb-4 text-white">
               BizHKD giúp Hộ kinh doanh tiết kiệm 80% thời gian xử lý chứng từ và ghi sổ kế toán, đảm bảo 100% tuân thủ quy định thuế Việt Nam.
             </p>
-            <div className="d-flex gap-3 flex-wrap">
+            <div className="d-flex gap-3">
               <Link href="#pricing" className="btn btn-primary btn-lg px-4 py-3">
                 Dùng thử miễn phí
               </Link>

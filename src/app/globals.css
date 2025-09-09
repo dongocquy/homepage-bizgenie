@@ -3507,19 +3507,20 @@ a:hover {
     margin-bottom: 1.5rem;
   }
   
-  .hero-section .btn {
+  .hero-section .btn,
+  .hero-section .btn-lg {
     width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     margin-top: 3mm !important;
-    font-size: 0.9rem;
-    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
   }
   
   .hero-section .d-flex.gap-3 {
-    flex-direction: column;
-    gap: 0.5rem !important;
-    margin-top: 3mm !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
   }
+  
   
   .hero-section .hero-image-static {
     margin-top: 7mm !important;
@@ -4736,55 +4737,6 @@ button.nav-link.active::before {
 }
 
 /* Hero section spacing adjustment */
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero-section {
-    min-height: 70vh;
-    padding: 1rem 0;
-    padding-top: 32px !important; /* Điều chỉnh padding-top cho navbar thu gọn trên mobile */
-    padding-bottom: 2mm !important;
-    text-align: center;
-    overflow: visible !important;
-    position: relative !important;
-  }
-  
-  .hero-section .display-4 {
-    font-size: 2rem !important;
-    line-height: 1.2;
-  }
-  
-  .hero-section .lead {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-section .btn {
-    width: 100%;
-    margin-bottom: 0.5rem;
-    margin-top: 3mm !important;
-    font-size: 0.9rem;
-    padding: 0.75rem 1rem;
-  }
-  
-  .hero-section .d-flex.gap-3 {
-    flex-direction: column;
-    gap: 0.5rem !important;
-    margin-top: 3mm !important;
-  }
-  
-  .hero-section .hero-image-static {
-    margin-top: 7mm !important;
-    margin-bottom: 2mm !important;
-    position: relative !important;
-    z-index: 5 !important;
-  }
-  
-  .hero-image-static img {
-    max-width: 100%;
-    height: auto;
-  }
-}
 
 /* Tab Indicator Navigation Styles */
 .tabs {
