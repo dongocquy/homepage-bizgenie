@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
       <div className="container">
         <div className="row align-items-center min-vh-100">
           <div className="col-lg-6 hero-content">
-            <span className="badge bg-dark text-white mb-3 px-3 py-2">
+            <span className="badge bg-primary text-white mb-3 px-3 py-2">
               AI GHI SỔ KẾ TOÁN THÔNG MINH
             </span>
             <h1 className="hero-title mb-4">
@@ -19,14 +19,14 @@ const Hero: React.FC = () => {
               <span className="hero-title-highlight">quy trình kế toán</span>
               <span className="hero-title-ai">với AI</span>
             </h1>
-            <p className="lead mb-4 text-white">
-              BizHKD giúp Hộ kinh doanh tiết kiệm 80% thời gian xử lý chứng từ và ghi sổ kế toán, đảm bảo 100% tuân thủ quy định thuế Việt Nam.
+            <p className="lead mb-4 text-dark">
+              <strong className="text-primary">BizHKD</strong> giúp Hộ kinh doanh tiết kiệm <strong className="text-success">80% thời gian</strong> xử lý chứng từ và ghi sổ kế toán, đảm bảo <strong className="text-warning">100% tuân thủ</strong> quy định thuế Việt Nam.
             </p>
             <div className="d-flex gap-3">
               <Link href="#pricing" className="btn btn-primary btn-lg px-4 py-3">
                 Dùng thử miễn phí
               </Link>
-              <Link href="#demo" className="btn btn-warning btn-lg px-4 py-3">
+              <Link href="#demo" className="btn btn-outline-primary btn-lg px-4 py-3">
                 Xem demo
               </Link>
             </div>

@@ -96,7 +96,7 @@ const Toast: React.FC<ToastProps> = ({
         aria-live="assertive"
         aria-atomic="true"
       >
-        <div className="toast-header bg-dark text-white">
+        <div className="toast-header bg-primary text-white">
           <i className={`${getIcon()} ${getColorClass()} me-2`}></i>
           <strong className="me-auto">{title}</strong>
           <button

@@ -4,13 +4,13 @@ import React from 'react';
 
 const Benefits: React.FC = () => {
   return (
-    <section id="benefits" className="py-4 benefits-section bg-secondary">
+    <section id="benefits" className="py-4 benefits-section bg-light">
       <div className="container">
         <div className="text-center mb-4">
           <h6 className="text-primary fw-bold mb-2">
             LỢI ÍCH VƯỢT TRỘI
           </h6>
-          <h2 className="display-6 fw-bold mb-3">
+          <h2 className="display-6 fw-bold mb-3 text-dark">
             Tại sao BizHKD là lựa chọn tốt nhất?
           </h2>
           <p className="lead text-secondary">
@@ -28,7 +28,7 @@ const Benefits: React.FC = () => {
                     <i className="fas fa-rocket"></i>
                   </div>
                   <div>
-                    <h3 className="fw-bold mb-2">Hiệu Quả Tối Đa</h3>
+                    <h3 className="fw-bold mb-2 text-dark">Hiệu Quả Tối Đa</h3>
                     <p className="text-secondary mb-0">Tự động hóa toàn bộ quy trình kế toán</p>
                   </div>
                 </div>
@@ -39,7 +39,7 @@ const Benefits: React.FC = () => {
                       <i className="fas fa-clock"></i>
                     </div>
                     <div>
-                      <h6 className="fw-bold mb-1">Tiết Kiệm 80% Thời Gian</h6>
+                      <h6 className="fw-bold mb-1 text-dark">Tiết Kiệm 80% Thời Gian</h6>
                       <p className="text-secondary mb-0 small">Xử lý tự động 24/7, không cần nhập liệu thủ công</p>
                     </div>
                   </div>
@@ -49,7 +49,7 @@ const Benefits: React.FC = () => {
                       <i className="fas fa-shield-alt"></i>
                     </div>
                     <div>
-                      <h6 className="fw-bold mb-1">100% Tuân Thủ Thuế</h6>
+                      <h6 className="fw-bold mb-1 text-dark">100% Tuân Thủ Thuế</h6>
                       <p className="text-secondary mb-0 small">Đảm bảo tuân thủ quy định thuế Việt Nam</p>
                     </div>
                   </div>
@@ -59,7 +59,7 @@ const Benefits: React.FC = () => {
                       <i className="fas fa-chart-line"></i>
                     </div>
                     <div>
-                      <h6 className="fw-bold mb-1">Báo Cáo Thông Minh</h6>
+                      <h6 className="fw-bold mb-1 text-dark">Báo Cáo Thông Minh</h6>
                       <p className="text-secondary mb-0 small">Phân tích dữ liệu và dự báo kinh doanh</p>
                     </div>
                   </div>
@@ -77,7 +77,7 @@ const Benefits: React.FC = () => {
                     <div className="benefit-icon-compact mb-3">
                       <i className="fas fa-brain"></i>
                     </div>
-                    <h6 className="fw-bold mb-2">AI Thông Minh</h6>
+                    <h6 className="fw-bold mb-2 text-dark">AI Thông Minh</h6>
                     <p className="text-secondary small mb-0 flex-grow-1">Xử lý chứng từ tự động với độ chính xác cao</p>
                   </div>
                 </div>
@@ -87,7 +87,7 @@ const Benefits: React.FC = () => {
                     <div className="benefit-icon-compact mb-3">
                       <i className="fas fa-cloud"></i>
                     </div>
-                    <h6 className="fw-bold mb-2">Lưu Trữ Đám Mây</h6>
+                    <h6 className="fw-bold mb-2 text-dark">Lưu Trữ Đám Mây</h6>
                     <p className="text-secondary small mb-0 flex-grow-1">Bảo mật cao, truy cập mọi lúc mọi nơi</p>
                   </div>
                 </div>
@@ -97,7 +97,7 @@ const Benefits: React.FC = () => {
                     <div className="benefit-icon-compact mb-3">
                       <i className="fas fa-headset"></i>
                     </div>
-                    <h6 className="fw-bold mb-2">Hỗ Trợ 24/7</h6>
+                    <h6 className="fw-bold mb-2 text-dark">Hỗ Trợ 24/7</h6>
                     <p className="text-secondary small mb-0 flex-grow-1">Đội ngũ chuyên gia hỗ trợ mọi lúc</p>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const Benefits: React.FC = () => {
                     <div className="benefit-icon-compact mb-3">
                       <i className="fas fa-mobile-alt"></i>
                     </div>
-                    <h6 className="fw-bold mb-2">Đa Nền Tảng</h6>
+                    <h6 className="fw-bold mb-2 text-dark">Đa Nền Tảng</h6>
                     <p className="text-secondary small mb-0 flex-grow-1">Sử dụng trên mọi thiết bị, mọi hệ điều hành</p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const Benefits: React.FC = () => {
         
         <div className="row mt-4">
           <div className="col-12">
-            <div className="stats-section-modern p-4 rounded-4">
+            <div className="stats-section-modern p-4 rounded-4 bg-primary">
               <div className="stats-bg-circle stats-bg-circle-1"></div>
               <div className="stats-bg-circle stats-bg-circle-2"></div>
               
@@ -126,28 +126,28 @@ const Benefits: React.FC = () => {
                 <div className="col-md-3 col-6">
                   <div className="stat-item-modern text-center">
                     <div className="stat-number-modern display-5 fw-bold text-white mb-2">10,000+</div>
-                    <div className="stat-label-modern text-white-50 fw-semibold">HKD TIN TƯỞNG</div>
+                    <div className="stat-label-modern text-white fw-semibold">HKD TIN TƯỞNG</div>
                   </div>
                 </div>
                 
                 <div className="col-md-3 col-6">
                   <div className="stat-item-modern text-center">
                     <div className="stat-number-modern display-5 fw-bold text-white mb-2">99.9%</div>
-                    <div className="stat-label-modern text-white-50 fw-semibold">ĐỘ CHÍNH XÁC</div>
+                    <div className="stat-label-modern text-white fw-semibold">ĐỘ CHÍNH XÁC</div>
                   </div>
                 </div>
                 
                 <div className="col-md-3 col-6">
                   <div className="stat-item-modern text-center">
                     <div className="stat-number-modern display-5 fw-bold text-white mb-2">24/7</div>
-                    <div className="stat-label-modern text-white-50 fw-semibold">HỖ TRỢ KHÁCH HÀNG</div>
+                    <div className="stat-label-modern text-white fw-semibold">HỖ TRỢ KHÁCH HÀNG</div>
                   </div>
                 </div>
                 
                 <div className="col-md-3 col-6">
                   <div className="stat-item-modern text-center">
                     <div className="stat-number-modern display-5 fw-bold text-white mb-2">5+</div>
-                    <div className="stat-label-modern text-white-50 fw-semibold">NĂM KINH NGHIỆM</div>
+                    <div className="stat-label-modern text-white fw-semibold">NĂM KINH NGHIỆM</div>
                   </div>
                 </div>
               </div>

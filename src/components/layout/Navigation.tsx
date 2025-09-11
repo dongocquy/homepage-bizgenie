@@ -101,14 +101,14 @@ const Navigation = () => {
   }, [isMenuOpen]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style={{backgroundColor: '#212529'}}>
+    <nav className="navbar navbar-expand-lg navbar-light shadow-sm fixed-top" style={{backgroundColor: '#ffffff'}}>
       <div className="container-fluid d-flex justify-content-between align-items-center">
         {/* Logo và tên công ty */}
         <Link href="/" className="navbar-brand d-flex align-items-center">
           <div className="d-flex align-items-center">
             <div>
-              <span className="fw-bold text-light fs-5">BizHKD</span>
-              <div className="small text-light opacity-75">AI Kế Toán</div>
+              <span className="fw-bold text-dark fs-5">BizHKD</span>
+              <div className="small text-secondary opacity-75">AI Kế Toán</div>
             </div>
           </div>
         </Link>
@@ -150,7 +150,7 @@ const Navigation = () => {
               onMouseEnter={(e) => moveIndicator(e.currentTarget)}
               onFocus={(e) => moveIndicator(e.currentTarget)}
             >
-              Lợi ích
+              Giải pháp
             </button>
             <button 
               data-section="demo"

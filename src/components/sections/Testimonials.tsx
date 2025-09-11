@@ -1,8 +1,88 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Testimonials: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [animatedStats, setAnimatedStats] = useState({
+    customers: 0,
+    rating: 0,
+    satisfaction: 0
+  });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Animate cards with stagger effect
+            testimonials.forEach((_, index) => {
+              setTimeout(() => {
+                setVisibleCards(prev => [...prev, index]);
+              }, index * 150);
+            });
+            // Animate stats
+            animateStats();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('testimonials-section');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const animateStats = () => {
+    const duration = 2000;
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    // Animate customers count
+    let step = 0;
+    const customerInterval = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setAnimatedStats(prev => ({
+        ...prev,
+        customers: Math.floor(10000 * easeOutQuart)
+      }));
+      if (step >= steps) clearInterval(customerInterval);
+    }, stepDuration);
+
+    // Animate rating
+    let ratingStep = 0;
+    const ratingInterval = setInterval(() => {
+      ratingStep++;
+      const progress = ratingStep / steps;
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setAnimatedStats(prev => ({
+        ...prev,
+        rating: Number((4.9 * easeOutQuart).toFixed(1))
+      }));
+      if (ratingStep >= steps) clearInterval(ratingInterval);
+    }, stepDuration);
+
+    // Animate satisfaction
+    let satisfactionStep = 0;
+    const satisfactionInterval = setInterval(() => {
+      satisfactionStep++;
+      const progress = satisfactionStep / steps;
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setAnimatedStats(prev => ({
+        ...prev,
+        satisfaction: Math.floor(99 * easeOutQuart)
+      }));
+      if (satisfactionStep >= steps) clearInterval(satisfactionInterval);
+    }, stepDuration);
+  };
   const testimonials = [
     {
       id: 1,
@@ -67,22 +147,31 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-5 bg-card">
+    <section id="testimonials-section" className="py-5 bg-card">
       <div className="container">
-        <div className="text-center mb-5">
-          <h6 className="text-primary fw-bold mb-2">ĐÁNH GIÁ KHÁCH HÀNG</h6>
-          <h2 className="display-5 fw-bold mb-3 text-white">
+        <div className={`text-center mb-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h6 className="text-primary fw-bold mb-2 animate-fade-in-up">ĐÁNH GIÁ KHÁCH HÀNG</h6>
+          <h2 className="display-5 fw-bold mb-3 text-dark animate-fade-in-up" style={{animationDelay: '0.2s'}}>
             Khách hàng nói gì về BizHKD?
           </h2>
-          <p className="lead text-secondary">
+          <p className="lead text-secondary animate-fade-in-up" style={{animationDelay: '0.4s'}}>
             Hơn 10,000+ Hộ kinh doanh đã tin tưởng và sử dụng BizHKD
           </p>
         </div>
         
         <div className="row g-4">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="col-lg-4 col-md-6">
-              <div className="testimonial-card h-100">
+          {testimonials.map((testimonial, index) => (
+            <div 
+              key={testimonial.id} 
+              className="col-lg-4 col-md-6"
+              style={{
+                opacity: visibleCards.includes(index) ? 1 : 0,
+                transform: visibleCards.includes(index) ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                transitionDelay: `${index * 0.1}s`
+              }}
+            >
+              <div className="testimonial-card h-100 testimonial-card-enhanced">
                 <div className="testimonial-header d-flex align-items-center mb-3">
                   <div className="testimonial-avatar me-3">
                     <div className="avatar-circle">
@@ -90,24 +179,31 @@ const Testimonials: React.FC = () => {
                     </div>
                   </div>
                   <div className="testimonial-info">
-                    <h6 className="fw-bold mb-1 text-white">{testimonial.name}</h6>
-                    <p className="text-warning mb-0 small">{testimonial.position}</p>
-                    <p className="text-secondary mb-0 small">{testimonial.company}</p>
+                    <h6 className="fw-bold mb-1 text-dark testimonial-customer-name">{testimonial.name}</h6>
+                    <p className="text-primary mb-0 small testimonial-position">{testimonial.position}</p>
+                    <p className="text-secondary mb-0 small testimonial-company">{testimonial.company}</p>
                   </div>
                 </div>
                 
                 <div className="testimonial-rating mb-3">
-                  {[...Array(testimonial.rating)].map((_, index) => (
-                    <i key={index} className="fas fa-star text-warning"></i>
+                  {[...Array(testimonial.rating)].map((_, starIndex) => (
+                    <i 
+                      key={starIndex} 
+                      className="fas fa-star text-primary star-animated"
+                      style={{
+                        animationDelay: `${starIndex * 0.1}s`,
+                        animation: visibleCards.includes(index) ? 'starGlow 0.6s ease-out forwards' : 'none'
+                      }}
+                    ></i>
                   ))}
                 </div>
                 
                 <blockquote className="testimonial-content">
-                  <p className="text-secondary mb-3">&ldquo;{testimonial.content}&rdquo;</p>
+                  <p className="text-secondary mb-3 testimonial-quote">&ldquo;{testimonial.content}&rdquo;</p>
                 </blockquote>
                 
                 <div className="testimonial-industry">
-                  <span className="badge bg-warning bg-opacity-20 text-warning">
+                  <span className="badge bg-primary bg-opacity-20 text-primary testimonial-industry-badge">
                     {testimonial.industry}
                   </span>
                 </div>
@@ -119,16 +215,22 @@ const Testimonials: React.FC = () => {
         <div className="text-center mt-5">
           <div className="stats-row d-flex justify-content-center align-items-center gap-5">
             <div className="stat-item text-center">
-              <div className="stat-number display-6 fw-bold text-white">10,000+</div>
-              <div className="stat-label text-secondary">Khách hàng tin tưởng</div>
+              <div className="stat-number display-6 fw-bold text-white counter-animated testimonial-stat-number">
+                {animatedStats.customers.toLocaleString()}+
+              </div>
+              <div className="stat-label text-secondary testimonial-stat-label">Khách hàng tin tưởng</div>
             </div>
             <div className="stat-item text-center">
-              <div className="stat-number display-6 fw-bold text-white">4.9/5</div>
-              <div className="stat-label text-secondary">Đánh giá trung bình</div>
+              <div className="stat-number display-6 fw-bold text-white counter-animated testimonial-stat-number">
+                {animatedStats.rating}/5
+              </div>
+              <div className="stat-label text-secondary testimonial-stat-label">Đánh giá trung bình</div>
             </div>
             <div className="stat-item text-center">
-              <div className="stat-number display-6 fw-bold text-white">99%</div>
-              <div className="stat-label text-secondary">Khách hàng hài lòng</div>
+              <div className="stat-number display-6 fw-bold text-white counter-animated testimonial-stat-number">
+                {animatedStats.satisfaction}%
+              </div>
+              <div className="stat-label text-secondary testimonial-stat-label">Khách hàng hài lòng</div>
             </div>
           </div>
         </div>

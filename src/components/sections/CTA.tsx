@@ -14,7 +14,7 @@ const CTA: React.FC = () => {
               <a href="https://zalo.me/0917787708" target="_blank" className="btn btn-primary btn-lg fw-bold">
                 <i className="fab fa-zalo me-2"></i>Liên hệ tư vấn miễn phí
               </a>
-              <a href="tel:0328866539" className="btn btn-warning btn-lg">
+              <a href="tel:0328866539" className="btn btn-outline-primary btn-lg">
                 <i className="fas fa-phone me-2"></i>Gọi ngay: 032 8866 539
               </a>
               <a href="#contact" className="btn btn-primary btn-lg">

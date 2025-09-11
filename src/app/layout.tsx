@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   title: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
   description: "BizHKD giúp Hộ kinh doanh tiết kiệm 80% thời gian xử lý chứng từ và ghi sổ kế toán, đảm bảo 100% tuân thủ quy định thuế Việt Nam.",
   keywords: "AI, kế toán, ghi sổ, hộ kinh doanh, thuế, tự động hóa",
-  authors: [{ name: "BizHKD Team" }],
-  creator: "BizHKD",
-  publisher: "BizHKD",
+  authors: [{ name: "BIZGENIE TECH & SOLUTION COMPANY LIMITED" }],
+  creator: "BIZGENIE TECH & SOLUTION COMPANY LIMITED",
+  publisher: "BIZGENIE TECH & SOLUTION COMPANY LIMITED",
   robots: "index, follow",
   openGraph: {
     title: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
@@ -58,12 +58,12 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="BizHKD" />
-        <meta name="msapplication-TileColor" content="#8b5cf6" />
+        <meta name="msapplication-TileColor" content="#3b82f6" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <meta name="format-detection" content="telephone=no" />
         
         {/* PWA Theme */}
-        <meta name="theme-color" content="#8b5cf6" />
+        <meta name="theme-color" content="#3b82f6" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         
         {/* Apple Touch Icons */}

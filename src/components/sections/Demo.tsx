@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 const Demo: React.FC = () => {
-  const [activeFeature, setActiveFeature] = useState(4); // Dashboard thông minh được highlight
+  const [activeFeature, setActiveFeature] = useState(4);
   const [isImageChanging, setIsImageChanging] = useState(false);
 
   const demoFeatures = [
@@ -34,12 +34,6 @@ const Demo: React.FC = () => {
     }
   ];
 
-  const dashboardFeatures = [
-    'Biểu đồ trực quan',
-    'Phân tích xu hướng',
-    'Cảnh báo bất thường',
-    'Báo cáo chi tiết'
-  ];
 
   // Lấy hình ảnh hiện tại dựa trên feature được chọn
   const currentImage = demoFeatures.find(feature => feature.id === activeFeature)?.image || demoFeatures[3].image;
@@ -52,7 +46,7 @@ const Demo: React.FC = () => {
     setTimeout(() => {
       setActiveFeature(featureId);
       setIsImageChanging(false);
-    }, 300); // Delay để tạo hiệu ứng fade
+    }, 400); // Tăng delay để hiệu ứng mượt mà hơn
   };
 
   return (
@@ -60,7 +54,7 @@ const Demo: React.FC = () => {
       <div className="container">
         <div className="text-center mb-5">
           <h6 className="text-primary fw-bold mb-2">DEMO TRỰC QUAN</h6>
-          <h2 className="display-5 fw-bold mb-3 text-white">Trải nghiệm BizHKD ngay bây giờ</h2>
+          <h2 className="display-5 fw-bold mb-3 text-dark">Trải nghiệm BizHKD ngay bây giờ</h2>
           <p className="lead text-secondary">Xem cách BizHKD tự động hóa quy trình kế toán của bạn</p>
         </div>
         
@@ -78,7 +72,7 @@ const Demo: React.FC = () => {
                     <i className="fas fa-play"></i>
                   </div>
                   <div className="demo-feature-content">
-                    <h5 className="fw-bold mb-2">{feature.title}</h5>
+                    <h5 className="fw-bold mb-2 text-dark">{feature.title}</h5>
                     <p className="text-muted mb-0">{feature.description}</p>
                   </div>
                 </div>
@@ -114,21 +108,6 @@ const Demo: React.FC = () => {
                 </div>
               </div>
 
-              {/* Dashboard Section */}
-              <div className="demo-dashboard-section">
-                <h4 className="fw-bold mb-3 text-white">Dashboard thông minh</h4>
-                <p className="text-secondary mb-4">Theo dõi tình hình tài chính và kinh doanh real-time</p>
-                <div className="row g-3">
-                  {dashboardFeatures.map((feature, index) => (
-                    <div key={index} className="col-lg-6">
-                      <div className="demo-dashboard-card">
-                        <i className="fas fa-check text-success me-2"></i>
-                        <span className="text-white">{feature}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>

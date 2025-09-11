@@ -46,7 +46,7 @@ const Features: React.FC = () => {
           <h6 className="text-primary fw-bold mb-2">
             TÍNH NĂNG NỔI BẬT
           </h6>
-          <h2 className="display-5 fw-bold mb-3">
+          <h2 className="display-5 fw-bold mb-3 text-dark">
             Tại sao chọn BizHKD?
           </h2>
           <p className="lead text-secondary">
@@ -62,7 +62,7 @@ const Features: React.FC = () => {
                   <i className={feature.icon}></i>
                 </div>
                 
-                <h5 className="fw-bold mb-3">
+                <h5 className="fw-bold mb-3 text-dark">
                   {feature.title}
                 </h5>
                 

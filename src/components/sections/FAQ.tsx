@@ -43,7 +43,7 @@ const FAQ: React.FC = () => {
     {
       id: 3,
       icon: 'fas fa-clock',
-      iconColor: 'text-warning',
+      iconColor: 'text-primary',
       question: 'Tôi có thể dùng thử trước khi mua không? Thời gian dùng thử bao lâu?',
       answer: 'Tất nhiên! BizHKD cung cấp gói dùng thử miễn phí:',
       features: [
@@ -73,7 +73,7 @@ const FAQ: React.FC = () => {
       <div className="container">
         <div className="text-center mb-5">
           <h6 className="text-primary fw-bold mb-2">CÂU HỎI THƯỜNG GẶP</h6>
-          <h2 className="display-5 fw-bold mb-3 text-white">Giải đáp thắc mắc của bạn</h2>
+          <h2 className="display-5 fw-bold mb-3 text-dark">Giải đáp thắc mắc của bạn</h2>
           <p className="lead text-secondary">Tìm hiểu thêm về BizHKD và cách sử dụng hiệu quả</p>
         </div>
         
@@ -94,7 +94,7 @@ const FAQ: React.FC = () => {
                             <i className={`${item.icon} ${item.iconColor}`}></i>
                           </div>
                         </div>
-                        <h5 className="faq-question mb-0 text-white">{item.question}</h5>
+                        <h5 className="faq-question mb-0 text-dark">{item.question}</h5>
                         <div className="faq-toggle">
                           <i className={`fas fa-chevron-down ${openItems.includes(item.id) ? 'rotated' : ''}`}></i>
                         </div>
