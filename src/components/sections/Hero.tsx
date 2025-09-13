@@ -19,8 +19,8 @@ const Hero: React.FC = () => {
               <span className="hero-title-highlight">quy trình kế toán</span>
               <span className="hero-title-ai">với AI</span>
             </h1>
-            <p className="lead mb-4 text-dark">
-              <strong className="text-primary">BizHKD</strong> giúp Hộ kinh doanh tiết kiệm <strong className="text-success">80% thời gian</strong> xử lý chứng từ và ghi sổ kế toán, đảm bảo <strong className="text-warning">100% tuân thủ</strong> quy định thuế Việt Nam.
+            <p className="lead mb-4 text-light">
+              <strong className="text-white">BizHKD</strong> giúp Hộ kinh doanh tiết kiệm <strong className="text-success">80% thời gian</strong> xử lý chứng từ và ghi sổ kế toán, đảm bảo <strong className="text-warning">100% tuân thủ</strong> quy định thuế Việt Nam.
             </p>
             <div className="d-flex gap-3">
               <Link href="#pricing" className="btn btn-primary btn-lg px-4 py-3">
