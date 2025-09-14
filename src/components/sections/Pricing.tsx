@@ -1,8 +1,63 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const Pricing: React.FC = () => {
+  const [loadingButtons, setLoadingButtons] = useState<{[key: string]: boolean}>({});
+
+  // Hàm tạo hiệu ứng ripple
+  const createRipple = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const button = event.currentTarget;
+    const ripple = button.querySelector('.ripple-effect') as HTMLElement;
+    
+    if (ripple) {
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.style.transform = 'scale(0)';
+      ripple.style.opacity = '1';
+      
+      // Trigger animation
+      setTimeout(() => {
+        ripple.style.transform = 'scale(4)';
+        ripple.style.opacity = '0';
+      }, 10);
+    }
+  };
+
+  // Hàm xử lý click với loading state
+  const handleButtonClick = (planName: string, url: string, event: React.MouseEvent<HTMLButtonElement>) => {
+    createRipple(event);
+    setLoadingButtons(prev => ({ ...prev, [planName]: true }));
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      window.open(url, '_blank');
+      setLoadingButtons(prev => ({ ...prev, [planName]: false }));
+    }, 1000);
+  };
+
+  // Hàm xử lý keyboard events
+  const handleKeyDown = (event: React.KeyboardEvent, planName: string, url: string) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      // Simulate click for keyboard users
+      const button = event.currentTarget as HTMLButtonElement;
+      const clickEvent = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        clientX: button.getBoundingClientRect().left + button.getBoundingClientRect().width / 2,
+        clientY: button.getBoundingClientRect().top + button.getBoundingClientRect().height / 2
+      });
+      button.dispatchEvent(clickEvent);
+    }
+  };
+
   return (
     <section id="pricing" className="py-5 bg-card">
       <div className="container">
@@ -32,10 +87,29 @@ const Pricing: React.FC = () => {
                 <li><i className="fas fa-check"></i>Hỗ trợ qua email</li>
               </ul>
               <div className="text-center">
-                <a href="https://bizgenie.vn/goi-starter---ai-ghi-so-ke-toan-bizhkd.html" className="btn btn-outline-primary w-100 btn-pricing">
-                  <span>Đăng ký ngay</span>
-                  <i className="fas fa-arrow-right ms-2"></i>
-                </a>
+                <button 
+                  onClick={(e) => handleButtonClick('starter', 'https://bizgenie.vn/goi-starter---ai-ghi-so-ke-toan-bizhkd.html', e)}
+                  onKeyDown={(e) => handleKeyDown(e, 'starter', 'https://bizgenie.vn/goi-starter---ai-ghi-so-ke-toan-bizhkd.html')}
+                  className={`btn btn-outline-primary w-100 btn-pricing pricing-btn-enhanced ${loadingButtons.starter ? 'loading' : ''}`}
+                  aria-label="Đăng ký gói Starter với giá 299K/tháng"
+                  disabled={loadingButtons.starter}
+                  type="button"
+                >
+                  <span className="btn-content">
+                    {loadingButtons.starter ? (
+                      <>
+                        <i className="fas fa-spinner fa-spin me-2" aria-hidden="true"></i>
+                        Đang xử lý...
+                      </>
+                    ) : (
+                      <>
+                        <span>Đăng ký ngay</span>
+                        <i className="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+                      </>
+                    )}
+                  </span>
+                  <div className="ripple-effect"></div>
+                </button>
               </div>
             </div>
           </div>
@@ -65,10 +139,29 @@ const Pricing: React.FC = () => {
                 <li><i className="fas fa-check"></i>Kế toán nộp báo cáo thuế và nhắc nộp báo cáo thuế</li>
               </ul>
               <div className="text-center">
-                <a href="https://bizgenie.vn/goi-pro---ai-ghi-so-ke-toan-bizhkd.html" className="btn btn-gradient w-100 btn-pricing">
-                  <span>Đăng ký ngay</span>
-                  <i className="fas fa-arrow-right ms-2"></i>
-                </a>
+                <button 
+                  onClick={(e) => handleButtonClick('pro', 'https://bizgenie.vn/goi-pro---ai-ghi-so-ke-toan-bizhkd.html', e)}
+                  onKeyDown={(e) => handleKeyDown(e, 'pro', 'https://bizgenie.vn/goi-pro---ai-ghi-so-ke-toan-bizhkd.html')}
+                  className={`btn btn-gradient w-100 btn-pricing pricing-btn-enhanced pricing-btn-popular ${loadingButtons.pro ? 'loading' : ''}`}
+                  aria-label="Đăng ký gói Pro với giá 499K/tháng - Gói phổ biến nhất"
+                  disabled={loadingButtons.pro}
+                  type="button"
+                >
+                  <span className="btn-content">
+                    {loadingButtons.pro ? (
+                      <>
+                        <i className="fas fa-spinner fa-spin me-2" aria-hidden="true"></i>
+                        Đang xử lý...
+                      </>
+                    ) : (
+                      <>
+                        <span>Đăng ký ngay</span>
+                        <i className="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+                      </>
+                    )}
+                  </span>
+                  <div className="ripple-effect"></div>
+                </button>
               </div>
             </div>
           </div>
@@ -93,10 +186,29 @@ const Pricing: React.FC = () => {
                 <li><i className="fas fa-check"></i>Hỗ trợ tùy chỉnh</li>
               </ul>
               <div className="text-center">
-                <a href="https://bizgenie.vn/goi-premium---ai-ghi-so-ke-toan-bizhkd.html" className="btn btn-outline-primary w-100 btn-pricing">
-                  <span>Đăng ký ngay</span>
-                  <i className="fas fa-arrow-right ms-2"></i>
-                </a>
+                <button 
+                  onClick={(e) => handleButtonClick('premium', 'https://bizgenie.vn/goi-premium---ai-ghi-so-ke-toan-bizhkd.html', e)}
+                  onKeyDown={(e) => handleKeyDown(e, 'premium', 'https://bizgenie.vn/goi-premium---ai-ghi-so-ke-toan-bizhkd.html')}
+                  className={`btn btn-outline-primary w-100 btn-pricing pricing-btn-enhanced ${loadingButtons.premium ? 'loading' : ''}`}
+                  aria-label="Đăng ký gói Premium với giá 699K/tháng"
+                  disabled={loadingButtons.premium}
+                  type="button"
+                >
+                  <span className="btn-content">
+                    {loadingButtons.premium ? (
+                      <>
+                        <i className="fas fa-spinner fa-spin me-2" aria-hidden="true"></i>
+                        Đang xử lý...
+                      </>
+                    ) : (
+                      <>
+                        <span>Đăng ký ngay</span>
+                        <i className="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+                      </>
+                    )}
+                  </span>
+                  <div className="ripple-effect"></div>
+                </button>
               </div>
             </div>
           </div>

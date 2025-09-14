@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 const Testimonials: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,79 +11,7 @@ const Testimonials: React.FC = () => {
     satisfaction: 0
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            // Animate cards with stagger effect
-            testimonials.forEach((_, index) => {
-              setTimeout(() => {
-                setVisibleCards(prev => [...prev, index]);
-              }, index * 150);
-            });
-            // Animate stats
-            animateStats();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const section = document.getElementById('testimonials-section');
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const animateStats = () => {
-    const duration = 2000;
-    const steps = 60;
-    const stepDuration = duration / steps;
-
-    // Animate customers count
-    let step = 0;
-    const customerInterval = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setAnimatedStats(prev => ({
-        ...prev,
-        customers: Math.floor(10000 * easeOutQuart)
-      }));
-      if (step >= steps) clearInterval(customerInterval);
-    }, stepDuration);
-
-    // Animate rating
-    let ratingStep = 0;
-    const ratingInterval = setInterval(() => {
-      ratingStep++;
-      const progress = ratingStep / steps;
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setAnimatedStats(prev => ({
-        ...prev,
-        rating: Number((4.9 * easeOutQuart).toFixed(1))
-      }));
-      if (ratingStep >= steps) clearInterval(ratingInterval);
-    }, stepDuration);
-
-    // Animate satisfaction
-    let satisfactionStep = 0;
-    const satisfactionInterval = setInterval(() => {
-      satisfactionStep++;
-      const progress = satisfactionStep / steps;
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setAnimatedStats(prev => ({
-        ...prev,
-        satisfaction: Math.floor(99 * easeOutQuart)
-      }));
-      if (satisfactionStep >= steps) clearInterval(satisfactionInterval);
-    }, stepDuration);
-  };
-  const testimonials = [
+  const testimonials = useMemo(() => [
     {
       id: 1,
       name: 'Nguyễn Văn Minh',
@@ -144,7 +72,80 @@ const Testimonials: React.FC = () => {
       rating: 5,
       industry: 'Dịch vụ làm đẹp'
     }
-  ];
+  ], []);
+
+  const animateStats = () => {
+    const duration = 2000;
+    const steps = 60;
+    const stepDuration = duration / steps;
+
+    // Animate customers count
+    let step = 0;
+    const customerInterval = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setAnimatedStats(prev => ({
+        ...prev,
+        customers: Math.floor(10000 * easeOutQuart)
+      }));
+      if (step >= steps) clearInterval(customerInterval);
+    }, stepDuration);
+
+    // Animate rating
+    let ratingStep = 0;
+    const ratingInterval = setInterval(() => {
+      ratingStep++;
+      const progress = ratingStep / steps;
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setAnimatedStats(prev => ({
+        ...prev,
+        rating: Number((4.9 * easeOutQuart).toFixed(1))
+      }));
+      if (ratingStep >= steps) clearInterval(ratingInterval);
+    }, stepDuration);
+
+    // Animate satisfaction
+    let satisfactionStep = 0;
+    const satisfactionInterval = setInterval(() => {
+      satisfactionStep++;
+      const progress = satisfactionStep / steps;
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setAnimatedStats(prev => ({
+        ...prev,
+        satisfaction: Math.floor(99 * easeOutQuart)
+      }));
+      if (satisfactionStep >= steps) clearInterval(satisfactionInterval);
+    }, stepDuration);
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Animate cards with stagger effect
+            testimonials.forEach((_, index) => {
+              setTimeout(() => {
+                setVisibleCards(prev => [...prev, index]);
+              }, index * 150);
+            });
+            // Animate stats
+            animateStats();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('testimonials-section');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, [testimonials]);
 
   return (
     <section id="testimonials-section" className="py-5 bg-card">

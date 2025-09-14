@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 
 const Navigation = () => {
@@ -10,7 +10,7 @@ const Navigation = () => {
   const outlineRef = useRef<HTMLSpanElement>(null);
 
   // Danh sách các section trên trang chủ
-  const sectionIds = ['hero', 'features', 'benefits', 'demo', 'pricing', 'faq'];
+  const sectionIds = useMemo(() => ['hero', 'features', 'benefits', 'demo', 'pricing', 'faq'], []);
   const [activeSection, setActiveSection] = useState('hero');
   
   // Simple scroll spy implementation

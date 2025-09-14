@@ -49,6 +49,14 @@ const Demo: React.FC = () => {
     }, 400); // Tăng delay để hiệu ứng mượt mà hơn
   };
 
+  // Hàm xử lý keyboard events cho accessibility
+  const handleKeyDown = (event: React.KeyboardEvent, featureId: number) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleFeatureClick(featureId);
+    }
+  };
+
   return (
     <section id="demo" className="py-5 bg-card">
       <div className="container">
@@ -67,6 +75,11 @@ const Demo: React.FC = () => {
                   key={feature.id} 
                   className={`demo-feature-card ${activeFeature === feature.id ? 'active' : ''}`}
                   onClick={() => handleFeatureClick(feature.id)}
+                  onKeyDown={(e) => handleKeyDown(e, feature.id)}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Xem demo tính năng: ${feature.title}`}
+                  aria-pressed={activeFeature === feature.id}
                 >
                   <div className="demo-feature-icon">
                     <i className="fas fa-play"></i>
@@ -91,16 +104,28 @@ const Demo: React.FC = () => {
                     <div className={`demo-image-wrapper ${isImageChanging ? 'changing' : ''}`}>
                       <Image
                         src={currentImage}
-                        alt="BizHKD Demo Interface"
+                        alt={`BizHKD Demo - ${demoFeatures.find(f => f.id === activeFeature)?.title || 'Dashboard thông minh'}`}
                         width={1600}
                         height={1200}
                         className="img-fluid rounded-custom shadow-lg demo-image-transition"
                         priority={false}
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
+                        style={{
+                          width: 'auto',
+                          height: 'auto'
+                        }}
                       />
                     </div>
                     <div className="demo-image-overlay">
-                      <button className="btn btn-gradient btn-lg demo-overlay-btn">
-                        <i className="fas fa-play me-2"></i>
+                      <button 
+                        className="btn btn-gradient btn-lg demo-overlay-btn"
+                        aria-label="Xem demo trực tiếp BizHKD"
+                        type="button"
+                      >
+                        <i className="fas fa-play me-2" aria-hidden="true"></i>
                         Xem demo
                       </button>
                     </div>

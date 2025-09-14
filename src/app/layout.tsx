@@ -1,30 +1,70 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../styles/optimizations.css";
 import Navigation from "@/components/layout/Navigation";
 import ToastContainer from "@/components/ui/ToastContainer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
 
 export const metadata: Metadata = {
-  title: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
-  description: "BizHKD giúp Hộ kinh doanh tiết kiệm 80% thời gian xử lý chứng từ và ghi sổ kế toán, đảm bảo 100% tuân thủ quy định thuế Việt Nam.",
-  keywords: "AI, kế toán, ghi sổ, hộ kinh doanh, thuế, tự động hóa",
+  title: {
+    default: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
+    template: "%s | BizHKD"
+  },
+  description: "BizHKD giúp Hộ kinh doanh tiết kiệm 80% thời gian xử lý chứng từ và ghi sổ kế toán, đảm bảo 100% tuân thủ quy định thuế Việt Nam. Giải pháp AI tự động hóa hoàn toàn quy trình kế toán.",
+  keywords: [
+    "AI kế toán",
+    "ghi sổ tự động", 
+    "hộ kinh doanh",
+    "kế toán thuế",
+    "tự động hóa kế toán",
+    "phần mềm kế toán",
+    "báo cáo thuế tự động",
+    "nhận diện chứng từ",
+    "BizHKD",
+    "kế toán thông minh"
+  ],
   authors: [{ name: "BIZGENIE TECH & SOLUTION COMPANY LIMITED" }],
   creator: "BIZGENIE TECH & SOLUTION COMPANY LIMITED",
   publisher: "BIZGENIE TECH & SOLUTION COMPANY LIMITED",
-  robots: "index, follow",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
-    description: "Giải pháp AI ghi sổ kế toán thông minh cho Hộ kinh doanh",
+    description: "Giải pháp AI ghi sổ kế toán thông minh cho Hộ kinh doanh. Tiết kiệm 80% thời gian, đảm bảo 100% tuân thủ thuế Việt Nam.",
     type: "website",
     locale: "vi_VN",
     siteName: "BizHKD",
+    url: "https://homepage.bizgenie.vn",
+    images: [
+      {
+        url: "https://static.agentcloud.vn/bizgenie.vn/images/test_642f0b38b1_20250813.png",
+        width: 1200,
+        height: 630,
+        alt: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "BizHKD - AI Ghi Sổ Kế Toán Thông Minh",
-    description: "Giải pháp AI ghi sổ kế toán thông minh cho Hộ kinh doanh",
+    description: "Giải pháp AI ghi sổ kế toán thông minh cho Hộ kinh doanh. Tiết kiệm 80% thời gian, đảm bảo 100% tuân thủ thuế Việt Nam.",
+    images: ["https://static.agentcloud.vn/bizgenie.vn/images/test_642f0b38b1_20250813.png"],
   },
-
+  alternates: {
+    canonical: "https://homepage.bizgenie.vn",
+  },
+  category: "technology",
+  classification: "Business Software",
   manifest: "/manifest.json",
 };
 
@@ -72,14 +112,16 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="512x512" href="/icon-512x512.svg" />
       </head>
       <body>
-        <Navigation />
-        {children}
-        
-        {/* Toast Container */}
-        <ToastContainer />
-        
-        {/* Scroll to Top Button */}
-        <ScrollToTop />
+        <ErrorBoundary>
+          <Navigation />
+          {children}
+          
+          {/* Toast Container */}
+          <ToastContainer />
+          
+          {/* Scroll to Top Button */}
+          <ScrollToTop />
+        </ErrorBoundary>
         
         {/* Bootstrap JS */}
         <script 
@@ -89,6 +131,38 @@ export default function RootLayout({
           async
         />
         
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "BizHKD",
+              "description": "Giải pháp AI ghi sổ kế toán thông minh cho Hộ kinh doanh",
+              "url": "https://homepage.bizgenie.vn",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "299000",
+                "priceCurrency": "VND",
+                "priceValidUntil": "2025-12-31"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "BIZGENIE TECH & SOLUTION COMPANY LIMITED",
+                "url": "https://bizgenie.vn"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "10000"
+              }
+            })
+          }}
+        />
+
         {/* Service Worker Registration */}
         <script
           dangerouslySetInnerHTML={{
